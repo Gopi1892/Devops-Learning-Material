@@ -1,0 +1,77 @@
+Basic Commands
+ls - List directory contents
+cd - Change the current directory
+pwd - Print the current working directory
+mkdir - Make a new directory
+rmdir - Remove an empty directory
+cp - Copy files and directories
+mv - Move/rename files and directories
+rm - Remove files and directories
+touch - Create an empty file or update the timestamp of a file
+cat - Concatenate and display file contents
+echo - Display a line of text
+man - Display the manual for a command
+chmod - Change file permissions
+chown - Change file owner and group
+find - Search for files in a directory hierarchy
+grep - Search text using patterns
+head - Output the first part of files
+tail - Output the last part of files
+df - Display disk space usage
+du - Estimate file space usage
+ps - Report a snapshot of current processes
+kill - Terminate processes by PID
+top - Display Linux tasks (system monitoring)
+nano - A simple text editor
+vi/vim - A more advanced text editor
+Intermediate Commands
+tar - Archive files
+gzip/gunzip - Compress and decompress files
+zip/unzip - Package and compress (archive) files
+scp - Secure copy (remote file copy program)
+rsync - Remote file and directory synchronization
+wget - Retrieve files from the web
+curl - Transfer data from or to a server
+ssh - OpenSSH SSH client (remote login program)
+chmod - Change file modes or Access Control Lists
+chown - Change file owner and group
+df - Report file system disk space usage
+du - Estimate file space usage
+alias - Create an alias for a command
+awk - Pattern scanning and processing language
+sed - Stream editor for filtering and transforming text
+xargs - Build and execute command lines from standard input
+crontab - Schedule periodic background jobs
+at - Schedule commands to run at a particular time
+systemctl - Control the systemd system and service manager
+journalctl - Query and display messages from the journal
+ln - Create hard and symbolic links
+netstat - Print network connections, routing tables, interface statistics, masquerade connections, and multicast memberships
+iptables - Administration tool for IPv4 packet filtering and NAT
+ufw - Uncomplicated Firewall, front-end for iptables
+Advanced Commands
+iptables - Administration tool for IPv4 packet filtering and NAT
+firewalld - Dynamic firewall management tool with D-Bus interface
+tcpdump - Command-line packet analyzer
+nmap - Network exploration tool and security/port scanner
+strace - Trace system calls and signals
+lsof - List open files
+iotop - Display I/O usage by processes or threads
+htop - Interactive process viewer
+dmesg - Print or control the kernel ring buffer
+sysctl - Configure kernel parameters at runtime
+systat - Collection of performance monitoring tools
+vmstat - Report virtual memory statistics
+sar - Collect, report, or save system activity information
+ip - Show/manipulate routing, devices, policy routing, and tunnels
+docker - Docker container management
+kubernetes - Container orchestration tool
+ansible - Automation tool for managing remote systems
+chef - Configuration management tool
+puppet - IT automation tool for configuration management
+terraform - Infrastructure as Code (IaC) tool
+git - Distributed version control system
+jenkins - Automation server for CI/CD
+prometheus - Monitoring and alerting toolkit
+grafana - Open-source platform for monitoring and observability
+elk stack (Elasticsearch, Logstash, Kibana) - Log management and analytics
