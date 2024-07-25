@@ -1,0 +1,36 @@
+Well-Known Ports (0–1023)
+Port 20: FTP (File Transfer Protocol) Data Transfer
+Port 21: FTP Control (command)
+Port 22: SSH (Secure Shell)
+Port 23: Telnet (Unsecured)
+Port 25: SMTP (Simple Mail Transfer Protocol)
+Port 53: DNS (Domain Name System)
+Port 67: DHCP (Dynamic Host Configuration Protocol) Server
+Port 68: DHCP Client
+Port 80: HTTP (Hypertext Transfer Protocol)
+Port 110: POP3 (Post Office Protocol v3)
+Port 119: NNTP (Network News Transfer Protocol)
+Port 123: NTP (Network Time Protocol)
+Port 143: IMAP (Internet Message Access Protocol)
+Port 161: SNMP (Simple Network Management Protocol)
+Port 194: IRC (Internet Relay Chat)
+Port 443: HTTPS (HTTP Secure)
+Port 445: SMB (Server Message Block)
+Port 465: SMTPS (SMTP Secure)
+Port 514: Syslog
+Port 515: LPD (Line Printer Daemon)
+Port 587: SMTP (Submission)
+Port 993: IMAPS (IMAP Secure)
+Port 995: POP3S (POP3 Secure)
+Registered Ports (1024–49151)
+Port 1433: Microsoft SQL Server
+Port 1434: Microsoft SQL Monitor
+Port 1521: Oracle Database
+Port 2049: NFS (Network File System)
+Port 3306: MySQL
+Port 3389: RDP (Remote Desktop Protocol)
+Port 5432: PostgreSQL
+Port 5900: VNC (Virtual Network Computing)
+Port 8080: HTTP Alternative (Commonly used for web servers)
+Dynamic/Private Ports (49152–65535)
+These ports are used for temporary or custom purposes. They are dynamically assigned to client applications when initiating outbound connections.
