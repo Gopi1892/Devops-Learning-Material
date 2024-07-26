@@ -7,3 +7,7 @@ For System Requirement https://docs.docker.com/desktop/install/windows-install/
       sudo systemctl status docker    // To check status of Docker if it is running
       sudo systemctl start docker     // If docker has not started we can start docker service
       sudo docker run hello-world     // To check Docker if it is running
+      sudo usermod -aG docker [username] // To give root permission to docker. In our case it is ec2-user 
+      Command will be sudo usermod -aG docker ec2-user. 
+      systemctl restart docker. // restart docker
+      newgrp docker // The user needs to log out and log back in for the group change to take effect. Alternatively, you can use the newgrp command
