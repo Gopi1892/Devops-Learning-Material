@@ -1,0 +1,50 @@
+Docker Basics
+docker --version: Show the Docker version installed.
+docker info: Display system-wide information about Docker.
+docker login: Log in to a Docker registry.
+docker logout: Log out from a Docker registry.
+Docker Image Commands
+docker images: List all Docker images on the local system.
+docker pull [image]: Download an image from a Docker registry.
+docker build -t [name] [path]: Build an image from a Dockerfile.
+docker rmi [image]: Remove a Docker image.
+
+
+Docker Container Commands
+docker ps: List running containers.
+docker ps -a: List all containers (running and stopped).
+docker run [image]: Run a container from an image.
+docker run -d [image]: Run a container in detached mode.
+docker run -it [image] /bin/bash: Run a container in interactive mode with a bash shell.
+docker exec -it [container_id] /bin/bash: Access a running container.
+docker stop [container_id]: Stop a running container.
+docker start [container_id]: Start a stopped container.
+docker restart [container_id]: Restart a running container.
+docker rm [container_id]: Remove a stopped container.
+docker logs [container_id]: Fetch the logs of a container.
+docker inspect [container_id]: Display detailed information on a container.
+docker commit [container_id] [new_image]: Create a new image from a container's changes.
+
+
+Docker Network Commands
+docker network ls: List all networks.
+docker network create [network_name]: Create a new network.
+docker network inspect [network_name]: Display detailed information on a network.
+docker network connect [network_name] [container_name]: Connect a container to a network.
+docker network disconnect [network_name] [container_name]: Disconnect a container from a network.
+
+
+Docker Volume Commands
+docker volume ls: List all volumes.
+docker volume create [volume_name]: Create a new volume.
+docker volume inspect [volume_name]: Display detailed information on a volume.
+docker volume rm [volume_name]: Remove a volume.
+
+
+Docker Compose Commands
+docker-compose up: Create and start containers defined in a docker-compose.yml file.
+docker-compose down: Stop and remove containers, networks, images, and volumes defined in a docker-compose.yml file.
+docker-compose build: Build or rebuild services defined in a docker-compose.yml file.
+docker-compose logs: View output from containers defined in a docker-compose.yml file.
+docker-compose ps: List containers defined in a docker-compose.yml file.
+docker-compose exec [service] [command]: Execute a command in a running container defined in a docker-compose.yml file.
