@@ -1,0 +1,67 @@
+A Dockerfile is a script containing a set of instructions to build a Docker image. Each instruction in a Dockerfile creates a layer in the image, which helps in managing the image efficiently and reusing layers. Below are the key components of a Dockerfile:
+
+FROM:
+This is the first instruction in a Dockerfile. It specifies the base image from which you are building.
+Example: FROM ubuntu:20.04
+
+LABEL:
+Adds metadata to the image, such as author or version information.
+Example: LABEL maintainer="yourname@example.com"
+
+RUN:
+Executes a command in the image being built. It is often used to install software packages.
+Example: RUN apt-get update && apt-get install -y nginx
+CMD:
+Provides the default command to run when a container is started from the image. Unlike RUN, CMD instructions do not execute at build time.
+Example: CMD ["nginx", "-g", "daemon off;"]
+
+Note: Only the last CMD instruction in a Dockerfile is used.
+EXPOSE:
+Informs Docker that the container listens on the specified network ports at runtime.
+Example: EXPOSE 80
+
+ENV:
+Sets environment variables within the container.
+Example: ENV APP_HOME /usr/src/app
+
+ADD:
+Copies files/directories from a source and adds them to the filesystem of the image at the specified path. It can also handle URL downloads and tar extraction.
+Example: ADD source.tar.gz /usr/src/app
+
+COPY:
+Similar to ADD, but only copies files/directories from the source to the destination.
+Example: COPY . /usr/src/app
+
+ENTRYPOINT:
+Configures a container that will run as an executable. It allows you to configure a container that will run as an executable.
+Example: ENTRYPOINT ["entrypoint.sh"]
+
+CMD can be used to provide additional arguments to the ENTRYPOINT.
+VOLUME:
+Creates a mount point with the specified path and marks it as holding externally mounted volumes from the host or other containers.
+Example: VOLUME /data
+
+USER:
+Sets the user name or UID to use when running the image and for any RUN, CMD, and ENTRYPOINT instructions that follow it in the Dockerfile.
+Example: USER appuser
+
+WORKDIR:
+Sets the working directory for any RUN, CMD, ENTRYPOINT, COPY, and ADD instructions that follow it.
+Example: WORKDIR /usr/src/app
+
+ARG:
+Defines a variable that users can pass at build-time to the builder with the docker build command.
+Example: ARG buildno=1
+
+ONBUILD:
+Adds a trigger instruction to the image that will be executed when the image is used as a base for another build.
+Example: ONBUILD RUN apt-get update && apt-get install -y curl
+
+STOPSIGNAL:
+Sets the system call signal that will be sent to the container to exit.
+Example: STOPSIGNAL SIGTERM
+
+HEALTHCHECK:
+Tells Docker how to test the container to check that it is still working.
+HEALTHCHECK --interval=5m --timeout=3s \
+  CMD curl -f http://localhost/ || exit 1
