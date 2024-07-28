@@ -1,0 +1,18 @@
+Bridge Network:
+Definition: A default network type that creates an isolated internal network for containers.
+Description: Containers on the same bridge network can communicate with each other directly, and they can also communicate with the external network via NAT (Network Address Translation). This network is suitable for standalone containers or simple application stacks running on a single host.
+Host Network:
+Definition: A network mode that makes the container use the host’s network stack directly.
+Description: There is no network isolation between the container and the host, meaning the container shares the host's IP address and port space. This network type is suitable for scenarios where performance is critical and network isolation is not required.
+Overlay Network:
+Definition: A network that spans multiple Docker hosts and allows containers on different hosts to communicate securely.
+Description: Overlay networks are used primarily in Docker Swarm or Kubernetes setups to enable services to communicate with each other across multiple hosts. This is particularly useful for distributed applications and microservices architectures.
+Macvlan Network:
+Definition: A network type that assigns a unique MAC address to each container, making it appear as a physical device on the network.
+Description: Macvlan networks allow containers to have direct access to the external network, appearing as separate physical devices. This network type is suitable for legacy applications that require direct layer 2 network access or need to appear as physical devices on the network.
+None Network:
+Definition: A network mode where no network interface is attached to the container.
+Description: Containers with the none network do not have any network access and cannot communicate over the network. This is useful for security purposes or specific use cases where networking is not required.
+Custom Networks:
+Definition: User-defined networks that can be created to meet specific networking requirements.
+Description: Custom networks can be bridge, overlay, or macvlan types, offering more flexibility in configuring IP addresses, subnets, gateways, and network isolation. They allow for fine-tuned network configurations tailored to the needs of complex applications and deployment environments.
