@@ -1,0 +1,23 @@
+# Start with a base image that includes a package manager
+FROM ubuntu:latest
+
+# Update package lists and install Apache HTTP Server
+RUN apt-get update && \
+    apt-get install -y apache2 && \
+    apt-get clean
+
+# Expose port 80 to the outside world
+EXPOSE 80
+
+# Start the Apache server in the foreground
+CMD ["apachectl", "-D", "FOREGROUND"]
+
+
+How to Run Docker File
+
+Save the above content to a file named Dockerfile.
+Build the Docker image:
+docker build -t my-httpd-image .
+
+Run the docker container 
+docker run -d -p 80:80 my-httpd-image
