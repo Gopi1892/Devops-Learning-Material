@@ -52,3 +52,45 @@ Microservices Architecture (Overlay Network): A set of microservices deployed ac
 Legacy Applications (Macvlan Network): Running a legacy application that requires direct network access and needs to appear as a physical device on the network.
 Isolated Processes (None Network): Running a batch job or a script that does not require network access.
 Understanding the requirements of your application and the network environment will help you choose the appropriate Docker network type.
+
+
+
+
+Docker networking is a critical aspect of working with Docker containers, as it enables containers to communicate with each other, with the host system, and with external networks. Here are some key concepts and examples of Docker networking:
+
+Docker Network Drivers
+Docker provides several network drivers to manage how containers connect to each other and to the outside world:
+
+Bridge Network (default): Isolated network on a single host. Containers on the same bridge network can communicate with each other.
+Host Network: Removes network isolation between the container and the Docker host, making the container use the host's networking directly.
+Overlay Network: Connects multiple Docker daemons together, useful for swarm services.
+Macvlan Network: Assigns a MAC address to each container, making them appear as physical devices on the network.
+None Network: Disables all networking.
+
+Example: Creating and Using a Bridge Network
+
+1)Create a custom bridge network:
+
+docker network create my_bridge_network
+
+2)Run a container and connect it to the bridge network:
+docker run -d --name my_nginx --network my_bridge_network nginx
+
+3)Run another container on the same network:
+docker run -d --name my_busybox --network my_bridge_network busybox sleep 3600
+
+4)Communicate between containers:
+docker exec -it my_busybox sh
+# Inside the busybox container
+ping my_nginx
+
+Managing Networks
+List networks:
+docker network ls
+
+Inspect network
+docker network inspect my_bridge_network
+
+remove a network
+docker network rm my_bridge_network
+
