@@ -1,1 +1,102 @@
+To push your Docker image to Docker Hub, you need to ensure you're tagging your image correctly and using the right commands. Here's a detailed step-by-step guide, including the correct usage of the docker push command:
+
+Step 1: Create a Flask Application
+First, create a directory for your project and navigate into it. Inside this directory, create a file named app.py with the following content:
+
+
+App.py
+
+# app.py
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return """
+    <html>
+    <head><title>Basic Details</title></head>
+    <body>
+        <h1>My Basic Details</h1>
+        <p><strong>Name:</strong> Adam</p>
+        <p><strong>Email:</strong> adam@gmail.com</p>
+        <p><strong>Location:</strong> Bangalore</p>
+    </body>
+    </html>
+    """
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=5000)
+
+
+
+Step 2: Create a Dockerfile
+In the same directory, create a file named Dockerfile with the following content:
+
+# Use the official Python image from the Docker Hub
+FROM python:3.9-slim
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy the current directory contents into the container at /app
+COPY . /app
+
+# Install Flask
+RUN pip install Flask
+
+# Make port 5000 available to the world outside this container
+EXPOSE 5000
+
+# Run app.py when the container launches
+CMD ["python", "app.py"]
+
+
+Step 3: Build the Docker Image
+Open your terminal, navigate to the directory containing app.py and Dockerfile, and run the following commands to build the Docker image:
+
+Build the Docker image:
+
+docker build -t flask-app .
+
+Step 4: Run the Docker Container Locally
+Run the Docker container:
+
+docker run -d -p 5000:5000 flask-app
+
+The -p 5000:5000 flag maps port 5000 on your local machine to port 5000 in the container. Now, if you navigate to http://localhost:5000 in your web browser, you should see a simple webpage displaying your basic details.
+
+Step 5: Push the Docker Image to Docker Hub
+To push the Docker image to Docker Hub, follow these steps:
+
+Create a Docker Hub Account:
+If you don't have a Docker Hub account, create one at Docker Hub.
+Log in to Docker Hub:
+
+docker login
+
+Enter your Docker Hub username and password when prompted.
+
+Tag the Docker Image:
+docker tag flask-app your-dockerhub-username/flask-app:v1
+
+Replace your-dockerhub-username with your actual Docker Hub username.
+Push the Docker Image to Docker Hub:
+
+docker push your-dockerhub-username/flask-app:v1
+
+
+
+Testing
+Pull the Docker Image from Docker Hub:
+Pull your Docker image:
+
+docker pull your-dockerhub-username/flask-app:v1
+
+Run the Docker Container on EC2:
+Run the Docker container:
+
+docker run -d -p 80:5000 your-dockerhub-username/flask-app:v1
+
+Now, if you navigate to your EC2 instance's public IP address (e.g., http://your-ec2-public-ip:v1), you should see the webpage displaying your basic details.
 
