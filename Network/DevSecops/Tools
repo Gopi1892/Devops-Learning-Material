@@ -1,0 +1,39 @@
+DevSecOps (Development, Security, and Operations) integrates security practices within the DevOps process. Here's a list of tools commonly used in DevSecOps, categorized by their functions:
+
+Code Analysis
+SonarQube: Continuous inspection of code quality to perform automatic reviews with static analysis of code.
+Coverity: Static analysis tool for identifying and managing security vulnerabilities in the code.
+Dependency Management
+OWASP Dependency-Check: Analyzes project dependencies for known vulnerabilities.
+Snyk: Finds and fixes vulnerabilities in dependencies and container images.
+Container Security
+Aqua Security: Comprehensive security for containerized applications.
+Clair: Static analysis for vulnerabilities in application containers (Docker).
+Configuration Management
+Chef Inspec: Framework for testing and auditing configuration policies.
+Puppet: Automation of the provisioning, configuration, and management of infrastructure.
+Continuous Integration/Continuous Deployment (CI/CD)
+Jenkins: Open-source automation server that provides hundreds of plugins to support building, deploying, and automating any project.
+GitLab CI: Integrated CI/CD tool for GitLab, which helps automate the build, test, and deploy pipelines.
+Infrastructure as Code (IaC)
+Terraform: IaC tool that allows users to define and provision a datacenter infrastructure using a high-level configuration language.
+AWS CloudFormation: Service for defining and provisioning AWS infrastructure resources.
+Monitoring and Logging
+ELK Stack (Elasticsearch, Logstash, Kibana): Tools for searching, analyzing, and visualizing log data in real-time.
+Prometheus: Monitoring and alerting toolkit, often used with Grafana for visualization.
+Security Testing
+Gauntlt: Security testing framework that helps integrate security tests into the CI/CD pipeline.
+OWASP ZAP (Zed Attack Proxy): Tool for finding security vulnerabilities in web applications.
+Secret Management
+HashiCorp Vault: Tool for securely storing and accessing secrets.
+AWS Secrets Manager: Service to manage access to secrets like database credentials and API keys.
+Compliance and Governance
+OpenSCAP: An open-source project for security compliance auditing.
+Cloud Custodian: Rules engine for managing public cloud accounts and resources.
+Runtime Protection
+Falco: Open-source runtime security tool for detecting anomalous activity in applications and containers.
+Sysdig Secure: Provides real-time monitoring and security for containers and microservices.
+Collaboration and Issue Tracking
+JIRA: Tool for bug tracking, issue tracking, and project management.
+Slack: Communication platform for team collaboration.
+These tools help ensure that security is integrated throughout the development and operations lifecycle, fostering a culture of "security as code" and improving overall software security posture.
