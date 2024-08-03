@@ -16,3 +16,39 @@ Description: Containers with the none network do not have any network access and
 Custom Networks:
 Definition: User-defined networks that can be created to meet specific networking requirements.
 Description: Custom networks can be bridge, overlay, or macvlan types, offering more flexibility in configuring IP addresses, subnets, gateways, and network isolation. They allow for fine-tuned network configurations tailored to the needs of complex applications and deployment environments.
+
+
+Docker network types are used to define how Docker containers communicate with each other, with the Docker host, and with the outside world. Here are the main Docker network types and their typical use cases:
+
+Bridge Network:
+Default network type for standalone containers.
+Containers on the same bridge network can communicate with each other using their container name or IP address.
+Used when you need containers to communicate with each other on the same host.
+Suitable for small-scale applications or development environments.
+Host Network:
+The container shares the network stack with the Docker host.
+Used when performance is critical and you need the container to have the same network performance as the host.
+Suitable for applications that need to bind to a specific port on the host or need direct access to host network interfaces.
+Overlay Network:
+Used in Docker Swarm or Kubernetes for multi-host communication.
+Allows containers running on different Docker hosts to communicate securely.
+Suitable for distributed applications and microservices architectures where containers span multiple hosts.
+Macvlan Network:
+Assigns a MAC address to each container, making it look like a physical device on the network.
+Containers appear as physical devices on the network and can communicate directly with other devices on the network.
+Suitable for applications that require direct Layer 2 network connectivity or need to appear as physical devices.
+None Network:
+No network interface is assigned to the container.
+Used when you want to disable networking for a container.
+Suitable for applications that do not require any network access.
+Custom Bridge Network:
+Similar to the default bridge network but allows for more customization and control.
+Provides isolation between containers on different custom bridge networks.
+Suitable for applications that require specific network configurations, custom DNS settings, or need to be isolated from other containers.
+Examples of Use Cases
+Web Application Stack (Bridge Network): A typical web application stack with a web server, application server, and database server running as separate containers on the same host. They communicate using a bridge network.
+Performance-Critical Applications (Host Network): An application that requires high network performance, such as a game server or a real-time data processing service, using the host network to reduce latency.
+Microservices Architecture (Overlay Network): A set of microservices deployed across multiple hosts in a Docker Swarm or Kubernetes cluster, using an overlay network for inter-service communication.
+Legacy Applications (Macvlan Network): Running a legacy application that requires direct network access and needs to appear as a physical device on the network.
+Isolated Processes (None Network): Running a batch job or a script that does not require network access.
+Understanding the requirements of your application and the network environment will help you choose the appropriate Docker network type.
