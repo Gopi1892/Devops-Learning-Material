@@ -1,0 +1,68 @@
+Docker Compose is a tool used for defining and running multi-container Docker applications. With Docker Compose, you can manage the entire lifecycle of your application using a simple YAML file to configure your application's services, networks, and volumes. This allows you to start, stop, and rebuild all the services defined in the configuration with a single command.
+
+Key Features of Docker Compose:
+
+Multi-Container Applications: Manage multiple containers as a single application.
+Service Configuration: Define services, networks, and volumes in a single YAML file.
+Easy Management: Start, stop, and rebuild services with a single command.
+Isolation: Each service runs in isolation, ensuring minimal conflicts.
+Version Control: Keep configurations in version control systems for easy tracking and collaboration.
+
+Example Docker Compose File:
+Let's consider a simple example where we have a web application with two services: a web server and a database.
+
+docker-compose.yml
+
+version: '3'
+
+services:
+  web:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./html:/usr/share/nginx/html
+    depends_on:
+      - db
+
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: examplepassword
+      MYSQL_DATABASE: exampledb
+      MYSQL_USER: exampleuser
+      MYSQL_PASSWORD: examplepassword
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
+
+
+Explanation:
+
+version: Specifies the version of the Docker Compose file format.
+services: Defines the services that make up the application.
+web: This is the web server service.
+image: The Docker image to use (in this case, the latest Nginx image).
+ports: Maps port 80 on the host to port 80 on the container.
+volumes: Mounts the ./html directory on the host to /usr/share/nginx/html in the container.
+depends_on: Specifies that the web service depends on the db service, so the database will start first.
+db: This is the database service.
+image: The Docker image to use (in this case, MySQL 5.7).
+environment: Sets environment variables for MySQL, such as root password, database name, user, and password.
+volumes: Mounts a named volume db_data to store the database files.
+volumes: Defines the named volumes used by the services.
+
+
+Running the Application:
+Navigate to the directory containing the docker-compose.yml file.
+Run the command:
+docker-compose up
+
+This command starts all the services defined in the docker-compose.yml file. You can then access the web server on port 80 of your host machine.
+
+To stop the application, you can run:
+docker-compose down
+
+This command stops and removes all the containers, networks, and volumes created by docker-compose up.
