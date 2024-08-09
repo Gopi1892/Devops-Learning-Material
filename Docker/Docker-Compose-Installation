@@ -16,3 +16,30 @@ sudo pip3 install docker-compose
 docker-compose --version
 
 
+
+Sometimes you may get an error
+Installing collected packages: urllib3, charset-normalizer, certifi, requests, pynacl, bcrypt, paramiko, docker, websocket-client, texttable, python-dotenv, docopt, dockerpty, docker-compose
+  Attempting uninstall: urllib3
+    Found existing installation: urllib3 1.25.10
+    Uninstalling urllib3-1.25.10:
+      Successfully uninstalled urllib3-1.25.10
+  Attempting uninstall: requests
+    Found existing installation: requests 2.25.1
+ERROR: Cannot uninstall requests 2.25.1, RECORD file not found. Hint: The package was installed by rpm.
+
+
+
+Here’s what you can do:
+
+1) Reinstall Requests Using RPM: You can try to reinstall the requests package using RPM to restore the missing files, and then use pip to proceed with the installation.
+
+sudo yum reinstall python3-requests
+
+2) After that, try installing docker-compose again using pip:
+
+pip install docker-compose
+
+3) Verify the Docker Compose installation:
+docker-compose --version
+
+
