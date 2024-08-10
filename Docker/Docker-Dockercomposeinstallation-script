@@ -1,11 +1,13 @@
 #!/bin/sh
 
+#use ubuntu image and execute as root user
+
 set -o errexit
 set -o nounset
 IFS=$(printf '\n\t')
 
 # Docker
-sudo yum install curl -y
+apt install curl -y
 curl -fsSL https://get.docker.com -o get-docker.sh
 sh get-docker.sh
 printf '\nDocker installed successfully\n\n'
