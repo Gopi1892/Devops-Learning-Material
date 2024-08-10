@@ -1,0 +1,92 @@
+Troubleshooting Docker Compose can involve a variety of issues related to configuration, networking, or container behavior. Here’s a basic guide to help you diagnose and fix common problems:
+
+1. Check Docker Compose Configuration
+Validate docker-compose.yml:
+Ensure that the syntax is correct. Use docker-compose config to validate and view the final configuration.
+
+docker-compose config
+
+
+2. Check Container Logs
+View logs for a specific service:
+
+Use docker-compose logs <service> to check the logs for a particular service. This helps in identifying issues with service startup or runtime errors.
+
+docker-compose logs <service>
+
+View logs for all services:
+
+Use docker-compose logs to view logs from all services.
+
+docker-compose logs
+
+3. Inspect Container Status
+List all containers:
+
+Use docker-compose ps to see the status of all containers defined in the docker-compose.yml.
+
+docker-compose ps
+Inspect a container:
+
+Use docker inspect <container_id> to get detailed information about a specific container, which can help in diagnosing issues.
+
+docker inspect <container_id>
+4. Check Networking Issues
+View network configuration:
+
+Use docker network ls to list networks and docker network inspect <network_name> to get details about a specific network.
+
+docker network ls
+docker network inspect <network_name>
+
+Ensure containers can communicate:
+
+Verify that services are properly configured to communicate with each other, especially when using custom networks.
+5. Check Service Configuration
+View service configuration:
+
+Use docker-compose config to see the final configuration including defaults and overrides.
+
+docker-compose config
+Check environment variables:
+
+Ensure that environment variables and configurations are correctly set and passed to containers.
+6. Restart Services
+Restart specific services:
+
+Use docker-compose restart <service> to restart a particular service if it’s misbehaving.
+
+docker-compose restart <service>
+Restart all services:
+
+Use docker-compose restart to restart all services.
+
+docker-compose restart
+7. Check for Build Issues
+Rebuild images:
+
+Use docker-compose build to rebuild images if there are issues related to outdated or corrupted images.
+
+docker-compose build
+Force rebuild:
+
+Use docker-compose build --no-cache to force a rebuild without using cached layers.
+
+docker-compose build --no-cache
+8. Check Docker Daemon
+Verify Docker daemon is running:
+
+Ensure that the Docker daemon is running properly. On most systems, you can check this with systemctl status docker or service docker status.
+
+systemctl status docker
+Restart Docker daemon:
+
+If needed, restart the Docker daemon with systemctl restart docker or service docker restart.
+
+systemctl restart docker
+9. Check Docker Compose Version
+Ensure compatibility:
+
+Make sure you are using a compatible version of Docker Compose with your docker-compose.yml file. Check the version with docker-compose --version.
+
+docker-compose --version
