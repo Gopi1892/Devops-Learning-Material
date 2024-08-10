@@ -19,3 +19,5 @@ Automated Testing: Jenkins can integrate with testing frameworks to automaticall
 Jenkins is highly adaptable, making it a popular choice for organizations of all sizes looking to streamline their software development processes.
 
 
+Jenkins Installation doc
+https://www.jenkins.io/doc/book/installing/linux/#debianubuntu
