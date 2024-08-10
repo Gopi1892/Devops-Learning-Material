@@ -1,0 +1,74 @@
+Create a custom docker image for nginx and deploy it using docker compose, where the volume should be at /var/opt/nginx location. Push the created custom docker image to your docker-hub.
+
+To create and deploy a custom Nginx Docker image using Docker Compose, and push the image to Docker Hub, follow these steps:
+
+Step 1: Create a Custom Nginx Dockerfile
+Create a directory for your project:
+
+mkdir custom-nginx
+cd custom-nginx
+
+Step 2: Create a Dockerfile:
+In the custom-nginx directory, create a Dockerfile with the following content:
+
+# Use the official Nginx image as a base
+FROM nginx:latest
+
+# Custom configuration or additional files can be added here
+# Example: Copy a custom Nginx config file
+# COPY nginx.conf /etc/nginx/nginx.conf
+
+# Expose port 80
+EXPOSE 80
+
+# The default command to run Nginx
+CMD ["nginx", "-g", "daemon off;"]
+
+
+Step3 Build the Docker Image
+Build the Docker image:
+
+docker build -t your-dockerhub-username/custom-nginx:latest .          //Replace your-dockerhub-username with your dockerhub username
+
+Step4 Create a Docker Compose File
+Create a docker-compose.yml file:
+In the custom-nginx directory, create a docker-compose.yml file with the following content:
+
+version: '3'
+
+services:
+  nginx:
+    image: your-dockerhub-username/custom-nginx:latest         //Replace your-dockerhub-username with your dockerhub username
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx-data:/var/opt/nginx
+
+
+This configuration maps the ./nginx-data directory on your host machine to /var/opt/nginx inside the container.
+Create the directory for volume:
+
+mkdir nginx-data
+
+Step5 Push the Image to Docker Hub
+1) Login to Docker Hub:
+docker login
+
+2) Push the Docker image to Docker Hub:
+
+docker push your-dockerhub-username/custom-nginx:latest      //Replace your-dockerhub-username with your dockerhub username
+
+Step 5: Deploy the Docker Compose Setup
+Deploy the application using Docker Compose:
+
+docker-compose up -d
+
+Access Nginx:
+Open your web browser and go to http://localhost. You should see the Nginx default page.
+Summary
+You created a custom Docker image for Nginx.
+You pushed the image to Docker Hub.
+You deployed the container using Docker Compose with a volume mapped to /var/opt/nginx.
+
+
+
