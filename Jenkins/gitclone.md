@@ -4,7 +4,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Get some code from a GitHub repository
-                git url: 'https://github.com/Teq516/SampleRegistratonForm.git', branch: 'main'
+                git url: 'https://github.com/ShailAdmin/MaventestCode.git', branch: 'main'
                 }
         }
     }
