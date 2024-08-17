@@ -1,0 +1,31 @@
+node {
+    stage('Test') {
+        try {
+            echo 'Test'
+            // Add your test steps here
+        } catch (Exception e) {
+            currentBuild.result = 'FAILURE'
+            throw e
+        }
+    }
+
+    stage('Build') {
+        try {
+            echo 'Build'
+            // Add your build steps here
+        } catch (Exception e) {
+            currentBuild.result = 'FAILURE'
+            throw e
+        }
+    }
+
+    stage('Deploy') {
+        try {
+            echo 'Deploy'
+            // Add your deploy steps here
+        } catch (Exception e) {
+            currentBuild.result = 'FAILURE'
+            throw e
+        }
+    }
+}
