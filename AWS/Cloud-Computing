@@ -1,0 +1,17 @@
+Cloud computing is the delivery of various computing services over the internet, including storage, processing power, databases, networking, software, and analytics. Instead of owning and maintaining physical servers or data centers, users and businesses can access these resources on-demand from a cloud service provider, such as Amazon Web Services (AWS), Microsoft Azure, or Google Cloud Platform.
+
+Here are the key characteristics and benefits of cloud computing:
+
+On-Demand Self-Service: Users can access computing resources like storage, processing, and network bandwidth as needed, without requiring human intervention from the service provider.
+Broad Network Access: Cloud services are accessible over the internet from a variety of devices, including computers, smartphones, and tablets.
+Resource Pooling: Providers pool their computing resources to serve multiple customers, with resources dynamically allocated and reallocated according to demand.
+Scalability and Elasticity: Cloud services can be scaled up or down automatically based on current needs, allowing for flexibility in handling varying workloads.
+Measured Service: Cloud computing resources are metered, meaning users pay only for what they use, which can lead to cost savings compared to traditional IT infrastructure.
+Rapid Elasticity: Resources can be quickly and easily adjusted to meet demand, enabling businesses to be more agile and responsive to changing conditions.
+Cost Efficiency: By using cloud services, businesses can avoid the capital costs of buying hardware and software and the ongoing operational costs of managing IT infrastructure.
+There are different types of cloud computing models:
+
+Infrastructure as a Service (IaaS): Provides virtualized computing resources over the internet. Examples include virtual machines, storage, and networks.
+Platform as a Service (PaaS): Offers a platform allowing customers to develop, run, and manage applications without dealing with the underlying infrastructure.
+Software as a Service (SaaS): Delivers software applications over the internet, typically on a subscription basis, without the need to install and run the software on local devices.
+Cloud computing has become fundamental to modern IT and business strategies due to its flexibility, scalability, and cost-effectiveness.
