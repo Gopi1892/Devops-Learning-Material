@@ -1,0 +1,87 @@
+Amazon Web Services (AWS) offers a vast array of cloud services that cater to various aspects of IT and business operations. These services are categorized based on their functionality and use cases. Here’s an overview of the key AWS services across different categories:
+
+1. Compute Services
+Amazon EC2 (Elastic Compute Cloud): Scalable virtual servers in the cloud. Users can configure and manage virtual machines with various operating systems and software packages.
+AWS Lambda: Serverless computing service that allows you to run code in response to events without provisioning or managing servers.
+Amazon ECS (Elastic Container Service): Fully managed container orchestration service for running Docker containers.
+Amazon EKS (Elastic Kubernetes Service): Managed Kubernetes service for running Kubernetes applications on AWS.
+AWS Fargate: Serverless compute engine for containers, works with ECS and EKS to run containers without managing servers.
+AWS Batch: Fully managed service for running batch computing workloads at any scale.
+2. Storage Services
+Amazon S3 (Simple Storage Service): Scalable object storage service for storing and retrieving any amount of data.
+Amazon EBS (Elastic Block Store): Block storage service for use with EC2, providing persistent storage for instances.
+Amazon EFS (Elastic File System): Managed file storage service that can be mounted on EC2 instances.
+Amazon Glacier & S3 Glacier Deep Archive: Low-cost cloud storage service for data archiving and long-term backup.
+AWS Storage Gateway: Hybrid cloud storage service that enables on-premises applications to use AWS cloud storage.
+3. Database Services
+Amazon RDS (Relational Database Service): Managed relational database service that supports various database engines like MySQL, PostgreSQL, Oracle, SQL Server, and MariaDB.
+Amazon DynamoDB: Managed NoSQL database service offering fast and predictable performance with seamless scalability.
+Amazon Aurora: MySQL and PostgreSQL-compatible relational database built for the cloud, combining the performance and availability of high-end commercial databases with the simplicity and cost-effectiveness of open-source databases.
+Amazon Redshift: Fully managed data warehouse service for large-scale data analytics.
+Amazon Neptune: Managed graph database service that supports highly connected data models.
+Amazon DocumentDB: Managed document database service that is compatible with MongoDB.
+Amazon ElastiCache: Managed in-memory caching service compatible with Redis and Memcached.
+4. Networking and Content Delivery
+Amazon VPC (Virtual Private Cloud): Allows you to create a logically isolated network in the AWS cloud where you can launch AWS resources in a virtual network that you define.
+Amazon CloudFront: Content delivery network (CDN) that securely delivers data, videos, applications, and APIs to users globally with low latency.
+AWS Direct Connect: Dedicated network connection from your premises to AWS for a consistent and private connection.
+Amazon Route 53: Scalable domain name system (DNS) web service for routing end users to internet applications.
+AWS Global Accelerator: Networking service that improves the availability and performance of your applications with global users.
+AWS Transit Gateway: Simplifies the management of networks by connecting VPCs and on-premises networks through a central hub.
+5. Security, Identity, and Compliance
+AWS IAM (Identity and Access Management): Manages access to AWS services and resources securely by creating and managing users, groups, and permissions.
+Amazon GuardDuty: Threat detection service that continuously monitors for malicious activity and unauthorized behavior.
+AWS Shield: Managed DDoS protection service that safeguards applications running on AWS.
+AWS WAF (Web Application Firewall): Protects web applications from common web exploits that can affect availability, compromise security, or consume excessive resources.
+AWS Key Management Service (KMS): Managed service that allows you to create and control encryption keys to secure your data.
+AWS Secrets Manager: Helps you protect access to your applications, services, and IT resources without the upfront cost and complexity of managing your own hardware security module (HSM) infrastructure.
+6. Analytics Services
+Amazon EMR (Elastic MapReduce): Managed Hadoop framework for processing vast amounts of data across scalable EC2 instances.
+Amazon Athena: Interactive query service that makes it easy to analyze data in S3 using SQL.
+Amazon Kinesis: Platform for real-time processing of streaming data at scale, including video, audio, application logs, and clickstream data.
+AWS Glue: Fully managed extract, transform, and load (ETL) service that makes it easy to prepare and load data for analytics.
+Amazon QuickSight: Business intelligence (BI) service that lets you create and publish interactive dashboards.
+7. Machine Learning and Artificial Intelligence
+Amazon SageMaker: Fully managed service that provides every developer and data scientist with the ability to build, train, and deploy machine learning models quickly.
+Amazon Rekognition: Service that makes it easy to add image and video analysis to your applications, such as facial recognition and object detection.
+Amazon Comprehend: Natural language processing (NLP) service that uses machine learning to find insights and relationships in text.
+Amazon Lex: Service for building conversational interfaces into any application using voice and text.
+Amazon Polly: Converts text into lifelike speech using deep learning technologies.
+AWS DeepRacer: A fully autonomous 1/18th scale race car driven by reinforcement learning, designed to help you get hands-on with machine learning.
+8. Developer Tools
+AWS CodeBuild: Fully managed build service that compiles source code, runs tests, and produces software packages ready for deployment.
+AWS CodePipeline: Continuous delivery service that automates the build, test, and deploy phases of your release process.
+AWS CodeCommit: Secure, scalable, managed source control service that hosts private Git repositories.
+AWS CodeDeploy: Automates the deployment of applications to a variety of compute services like EC2, Lambda, and on-premises servers.
+AWS X-Ray: Helps developers analyze and debug distributed applications in production or under development.
+9. Management and Governance
+AWS CloudWatch: Monitoring and observability service for AWS resources and applications that lets you collect and track metrics, log files, and set alarms.
+AWS CloudFormation: Provides a common language for you to model and provision AWS and third-party application resources in your cloud environment.
+AWS CloudTrail: Enables governance, compliance, and operational and risk auditing of your AWS account by recording AWS API calls.
+AWS Config: Enables you to assess, audit, and evaluate the configurations of your AWS resources to ensure compliance.
+AWS Systems Manager: Provides a unified user interface so you can track and resolve operational issues across your AWS resources.
+10. Migration and Transfer
+AWS Migration Hub: Provides a single location to track the progress of application migrations across multiple AWS and partner solutions.
+AWS Snowball: Petabyte-scale data transport solution that uses secure appliances to transfer large amounts of data into and out of AWS.
+AWS Database Migration Service (DMS): Helps you migrate databases to AWS quickly and securely, with minimal downtime.
+11. Internet of Things (IoT)
+AWS IoT Core: Managed cloud service that lets connected devices interact with cloud applications and other devices securely.
+AWS IoT Greengrass: Extends AWS to edge devices so they can act locally on the data they generate while still using the cloud for management, analytics, and storage.
+AWS IoT Analytics: Fully managed service that makes it easy to run and operationalize sophisticated analytics on massive volumes of IoT data.
+12. Application Integration
+Amazon SQS (Simple Queue Service): Fully managed message queuing service that enables you to decouple and scale microservices, distributed systems, and serverless applications.
+Amazon SNS (Simple Notification Service): Fully managed pub/sub messaging service that enables you to send messages to distributed systems and devices.
+AWS Step Functions: Makes it easy to coordinate the components of distributed applications and microservices using visual workflows.
+13. Game Development
+Amazon GameLift: Managed service for deploying, operating, and scaling dedicated game servers for session-based multiplayer games.
+Amazon Lumberyard: A free, cross-platform 3D game engine for creating high-quality games.
+14. Mobile Services
+AWS Amplify: A set of tools and services that enables mobile and front-end web developers to build secure, scalable full-stack applications.
+AWS AppSync: Simplifies application development by letting you create a flexible API to securely access, manipulate, and combine data from one or more data sources.
+15. Business Applications
+Amazon WorkSpaces: Managed, secure cloud desktop service. You can use WorkSpaces to provision either Windows or Linux desktops in just a few minutes.
+Amazon Chime: Communications service that lets you meet, chat, and place business calls inside and outside your organization.
+Amazon Connect: Cloud-based contact center service that makes it easy for businesses to deliver better customer service at a lower cost.
+16. Quantum Technologies
+Amazon Braket: Fully managed service that helps you get started with quantum computing by providing a development environment to explore and design quantum algorithms.
+AWS offers a comprehensive suite of services that can be used individually or together to build scalable, reliable, and cost-effective applications. The services listed above are just some of the most well-known and widely used, but AWS continuously evolves and adds new services to meet the ever-changing needs of the cloud computing landscape.
