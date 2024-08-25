@@ -1,0 +1,29 @@
+This is an end to end CI/CD pipeline to install apache server using Jenkins - CI/CD
+
+Step 1 - Run an EC2 instance VM (Jenkins) with jenkins installed
+Step 2 - Run another EC2 instance VM (Remote Server)
+
+Step 3 - Install Jenkins on Jenkins Server
+
+Step 4 - Install maven on Jenkins Server - "sudo apt-get install maven"
+
+Step 5 - Install git on Jenkins Server - "sudo apt-get install git -y"
+
+Step 6 - Generate ssh on Jenkins Server - "ssh-keygen -t rsa -b 4096"
+
+Step 7 - Login to remote Server 
+
+Step 8 - Set Password for Ubuntu "sudo passwd ubuntu" I set password as p
+
+Step 9 - Go to Jenkins Server
+
+Step 10 - Go to .ssh folder "cd .ssh". 
+
+Step 11 - Copy pub key of ssh "sudo cat id_rsa.pub"
+
+Step 12 - Go to Jenkins Server
+
+Step 13 - Go to .ssh folder "cd .ssh" . Open authorized key using vi editor "vi authorized_keys". 
+
+Step 14 - Copy the keys without deleting the previous (Go to lastline press enter and copy the key)
+
