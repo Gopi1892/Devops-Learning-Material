@@ -21,7 +21,7 @@ Step 10 - Go to .ssh folder "cd .ssh".
 
 Step 11 - Copy pub key of ssh "sudo cat id_rsa.pub"
 
-Step 12 - Go to Jenkins Server
+Step 12 - Go to Remote Server
 
 Step 13 - Go to .ssh folder "cd .ssh" . Open authorized key using vi editor "vi authorized_keys". 
 
