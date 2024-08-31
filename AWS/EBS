@@ -1,0 +1,19 @@
+AWS EBS, which stands for Amazon Web Services Elastic Block Store. AWS EBS is a block storage service designed for use with Amazon EC2 instances. Here are some key points:
+
+Elastic Block Store (EBS) provides block-level storage volumes that can be used with Amazon EC2 instances.
+Durability: EBS volumes are designed to be highly available and reliable. They are automatically replicated within their Availability Zone to protect against hardware failures.
+Performance: EBS volumes offer consistent performance, and you can choose from different types of volumes depending on your performance needs, such as General Purpose SSD (gp2, gp3), Provisioned IOPS SSD (io1, io2), Throughput Optimized HDD (st1), and Cold HDD (sc1).
+Snapshots: You can create snapshots of EBS volumes, which are stored in Amazon S3. These snapshots can be used to create new EBS volumes or to restore the original volume if needed.
+Encryption: EBS volumes can be encrypted to secure your data at rest, and encryption can be enabled with a single checkbox.
+
+Amazon EBS can be used in a variety of scenarios. Here are some common use cases:
+
+Database Storage: EBS is often used to store the data for relational databases like MySQL, PostgreSQL, or Oracle running on EC2 instances. The performance characteristics of EBS volumes, such as Provisioned IOPS (io1 or io2), make them suitable for high-performance database workloads.
+Application Storage: For applications that require persistent storage of files or data, EBS provides reliable storage. This is especially useful for applications that need to maintain state or manage large amounts of data.
+Backup and Recovery: EBS volumes can be snapshotted to create backups. These snapshots can be used for disaster recovery or to clone data for testing and development purposes. Snapshots are stored in S3 and can be easily restored or used to create new volumes.
+Big Data Analytics: EBS can be used to provide scalable storage for big data frameworks such as Hadoop or Apache Spark. The performance of EBS volumes can be tuned to meet the needs of data-intensive applications.
+File Systems: EBS volumes can be used to create file systems on EC2 instances. For example, you can set up an ext4 file system on an EBS volume for Linux instances or an NTFS file system for Windows instances.
+Boot Volumes: EBS volumes can be used as the root device for EC2 instances. This means that the operating system and initial application data are stored on an EBS volume, allowing for easy instance management and scaling.
+High-Availability Applications: EBS volumes can be used with multiple EC2 instances in a high-availability setup, such as a clustered application, to ensure that data is consistently available across instances.
+Development and Testing: EBS provides a cost-effective way to create and manage development and test environments. Snapshots and volume cloning make it easy to create new environments that replicate production data.
+Each use case can benefit from different EBS volume types based on performance, cost, and capacity requirements.
