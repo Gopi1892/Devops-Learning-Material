@@ -1,0 +1,33 @@
+1. Data Model
+DynamoDB uses two main data models:
+
+Key-Value Model: Each item in the database is identified by a unique primary key, which consists of one or two attributes. The key-value pairs are essentially stored as JSON objects, where the key is the unique identifier, and the value is the data associated with that key.
+Document Model: DynamoDB also supports more complex structures by storing data as documents, typically in JSON format. These documents can have nested attributes and arrays, making it flexible for various data types.
+2. Performance
+Single-Digit Millisecond Latency: DynamoDB is designed to deliver low-latency performance. It uses SSD storage and in-memory caching to ensure quick data retrieval.
+Provisioned and On-Demand Modes: In provisioned mode, you specify the read and write capacity units, which are the number of requests per second that the table can handle. In on-demand mode, DynamoDB automatically adjusts capacity based on the workload, which is useful for unpredictable or variable traffic patterns.
+3. Scalability
+Automatic Scaling: DynamoDB can handle large amounts of traffic and data without manual intervention. It automatically partitions and replicates data across multiple nodes to maintain performance and availability.
+Global Tables: For applications with global reach, DynamoDB offers Global Tables, which replicate data across multiple AWS regions. This ensures low-latency access to data regardless of user location and provides high availability and disaster recovery capabilities.
+4. Managed Service
+Administrative Tasks: AWS manages the underlying infrastructure, including hardware provisioning, database setup, configuration, and patching. This reduces the operational overhead for users.
+Maintenance: DynamoDB performs routine maintenance and updates to keep the service running smoothly and securely.
+5. Indexes
+Global Secondary Indexes (GSI): These allow you to create indexes with different partition and sort keys from the table's primary key. GSIs enable querying on attributes other than the primary key.
+Local Secondary Indexes (LSI): These indexes use the same partition key as the primary key but allow for a different sort key. LSIs are useful for querying with alternate sort keys.
+6. Capacity Modes
+Provisioned Capacity: You specify the number of read and write capacity units. This is suitable for predictable workloads where you know the traffic patterns in advance.
+On-Demand Capacity: DynamoDB automatically handles scaling based on actual traffic. This mode is useful for unpredictable workloads or when traffic spikes are expected.
+7. Streams
+Change Data Capture: DynamoDB Streams captures and stores changes to items in a table, such as inserts, updates, and deletes. Streams can be used to trigger AWS Lambda functions or other processing workflows, allowing you to build event-driven applications.
+Data Consistency: You can choose between eventual consistency and strong consistency when reading data. Strongly consistent reads return the latest data, while eventually consistent reads may return data that is slightly out of date.
+8. Security
+IAM Integration: DynamoDB integrates with AWS Identity and Access Management (IAM) to control access to tables and their data. Policies can be defined to restrict or allow access based on user roles and permissions.
+Encryption: DynamoDB provides encryption at rest using AWS Key Management Service (KMS) to protect data stored in DynamoDB. Data in transit is encrypted using SSL/TLS.
+9. Global Tables
+Multi-Region Replication: Global Tables replicate your data across multiple AWS regions. This provides low-latency access to data for users around the world and ensures high availability.
+Conflict Resolution: DynamoDB handles conflict resolution automatically by using a last-writer-wins approach based on the timestamp of the last write operation.
+10. Backups and Restore
+On-Demand Backup: You can create backups of your DynamoDB tables at any time. This is useful for archiving data or recovering from accidental deletions.
+Point-in-Time Recovery (PITR): This feature allows you to restore your table to any point in time within the last 35 days. It provides protection against data loss due to accidental updates or deletions.
+
