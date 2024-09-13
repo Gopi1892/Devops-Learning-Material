@@ -1,0 +1,34 @@
+1. Introduction
+
+Definition: Amazon Elastic Load Balancer (ELB) is a cloud service that automatically distributes incoming traffic across multiple targets, such as Amazon EC2 instances, containers, and IP addresses. This ensures that no single instance becomes a bottleneck or fails to handle the incoming load.
+Purpose: The main purpose of ELB is to enhance the availability, fault tolerance, and scalability of applications deployed on AWS.
+2. Types of Elastic Load Balancers
+
+Classic Load Balancer (CLB)
+Layer: Operates at both Layer 4 (Transport) and Layer 7 (Application).
+Features: Provides basic load balancing for EC2 instances and supports TCP and HTTP/HTTPS protocols.
+Use Case: Suitable for older applications and simple load balancing needs.
+Application Load Balancer (ALB)
+Layer: Operates at Layer 7 (Application Layer).
+Features: Supports advanced routing features like host-based routing, path-based routing, SSL termination, and WebSocket support.
+Use Case: Ideal for microservices, containerized applications, and modern HTTP/HTTPS applications.
+Network Load Balancer (NLB)
+Layer: Operates at Layer 4 (Transport Layer).
+Features: Designed for high-performance applications with extreme low latency and handles millions of requests per second.
+Use Case: Best for TCP and UDP traffic, especially when you need high throughput and low latency.
+Gateway Load Balancer (GWLB)
+Layer: Operates at Layer 3 and Layer 4.
+Features: Simplifies the deployment and scaling of virtual appliances such as firewalls and intrusion detection systems.
+Use Case: Useful for integrating with virtual appliances and providing transparent traffic routing.
+3. Key Features of ELB
+
+Automatic Scaling: ELB adjusts its capacity to handle changes in traffic without manual intervention.
+Health Checks: Regularly monitors the health of registered targets and only routes traffic to healthy ones.
+SSL/TLS Termination: Offloads SSL/TLS decryption from your instances, enhancing security and performance.
+Cross-Zone Load Balancing: Distributes traffic across instances in multiple availability zones, improving fault tolerance.
+4. Benefits of Using ELB
+
+Improved Availability: By distributing traffic, ELB reduces the risk of any single point of failure.
+Scalability: Automatically scales to accommodate incoming traffic, ensuring consistent performance.
+Simplified Management: Reduces the complexity of managing traffic distribution and provides built-in redundancy.
+Enhanced Security: Supports secure connections and integrates with AWS security tools for comprehensive protection.
