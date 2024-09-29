@@ -52,3 +52,27 @@ resource "aws_instance" "my_ec2" {
 output "instance_public_ip" {
   value = aws_instance.my_ec2.public_ip
 }
+
+
+
+
+
+#####################################
+Incase of authentication issues with aws.
+
+Change the providers.tf to
+
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.0"
+    }
+  }
+}
+
+provider "aws" {
+  region     = "AWS_REGION"
+  access_key = "AWS_ACCESS_KEY"
+  secret_key = "AWS_SECRET_KEY"
+}
