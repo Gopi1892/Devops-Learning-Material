@@ -1,0 +1,49 @@
+1. Pod
+Definition: The fundamental unit of deployment in Kubernetes, a Pod can host one or multiple containers that share network and storage resources.
+Key Features:
+Lifecycle: Pods have a defined lifecycle that includes phases like Pending, Running, Succeeded, Failed, and Unknown.
+Networking: Each Pod gets its own IP address, allowing containers within a Pod to communicate using localhost.
+Storage: Pods can mount storage volumes to persist data across container restarts.
+2. Service
+Definition: A Service defines a logical set of Pods and provides a stable endpoint for accessing them.
+Types of Services:
+ClusterIP: Exposes the Service on a cluster-internal IP. This is the default type and allows communication within the cluster.
+NodePort: Exposes the Service on each Node’s IP at a static port, enabling external traffic to access it.
+LoadBalancer: Automatically provisions an external load balancer (if supported by the cloud provider) and assigns a public IP to the Service.
+3. Deployment
+Definition: A Deployment manages the lifecycle of a set of Pods, ensuring that the desired state matches the actual state.
+Key Features:
+Rolling Updates: You can update your application without downtime, as Deployments facilitate rolling updates to Pods.
+Rollback: If a new deployment fails, you can easily revert to a previous version.
+Scaling: You can scale the number of Pods up or down with a simple command.
+4. ReplicaSet
+Definition: Ensures that a specified number of pod replicas are running at any given time.
+Usage: Typically managed by a Deployment, but can be used independently to maintain the desired state of Pods.
+5. StatefulSet
+Definition: Used for managing stateful applications that require stable identities and persistent storage.
+Key Features:
+Stable Network Identity: Each Pod in a StatefulSet has a unique, stable network identifier.
+Persistent Storage: StatefulSets can be configured to use persistent volumes, ensuring data is preserved across Pod restarts.
+Ordered Deployment and Scaling: Pods are deployed and terminated in a specific order, which is critical for stateful applications.
+6. ConfigMap
+Definition: A way to store non-confidential data in key-value pairs, allowing you to manage configuration settings separately from your container images.
+Usage: ConfigMaps can be referenced in Pods as environment variables or mounted as files in a volume.
+7. Secret
+Definition: Similar to ConfigMap, but specifically for sensitive information such as passwords, tokens, or keys.
+Security: Secrets are stored in an encoded format, and you can control access to them using Kubernetes RBAC (Role-Based Access Control).
+8. Namespace
+Definition: A way to divide cluster resources among multiple users or teams. Namespaces provide a scope for names and can help isolate resources.
+Usage: Useful in multi-tenant environments, allowing different teams to operate in their own namespaces without interfering with each other.
+9. Volume
+Definition: A storage abstraction that allows data to persist beyond the lifecycle of a Pod.
+Types:
+EmptyDir: A temporary directory that exists as long as the Pod is running.
+PersistentVolume: A piece of storage in the cluster that has been provisioned by an administrator, allowing for more permanent data storage.
+Cloud Provider Volumes: Integrates with cloud providers (like AWS EBS, GCP Persistent Disk) to dynamically provision storage.
+10. Job/CronJob
+Job:
+Definition: Manages the execution of a batch process that runs to completion. Once the specified number of Pods successfully terminate, the Job is complete.
+CronJob:
+Definition: Similar to a Job but runs on a scheduled basis (like a cron job in Unix/Linux). Useful for regular tasks like backups or report generation.
+Conclusion
+Kubernetes objects play a crucial role in defining, deploying, and managing applications in a cloud-native environment. Understanding each object’s purpose and how they interact with one another is essential for effectively utilizing Kubernetes to orchestrate containerized applications. By using these objects, you can ensure your applications are scalable, resilient, and maintainable.
