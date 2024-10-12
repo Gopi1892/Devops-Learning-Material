@@ -36,4 +36,9 @@ Set Default Namespace for kubectl Commands: You can switch between namespaces by
 
 kubectl config set-context --current --namespace=my-namespace
 
-
+Namespace Use Cases:
+Development Environments: You can create separate namespaces for different environments, like dev, test, and prod.
+Team-Based Isolation: Different teams working on the same cluster can have their own namespaces, allowing them to operate independently without affecting each other.
+Resource Quota Enforcement: You can set resource quotas within namespaces to prevent any team or environment from using more than its fair share of CPU, memory, or other resources.
+CI/CD Pipelines: Use namespaces to isolate CI/CD environments, where temporary environments are created for testing during each build.
+Namespaces are a fundamental way to manage resources and enforce policies in a Kubernetes cluster, especially when running multiple workloads or supporting multi-tenant use cases.
