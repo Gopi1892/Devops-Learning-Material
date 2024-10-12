@@ -1,0 +1,39 @@
+In Kubernetes (K8s), a namespace is a way to divide cluster resources between multiple users or groups of users. It provides a way to create logical isolation within the cluster, which can help manage and organize resources more effectively. Each Kubernetes namespace acts as a virtual cluster backed by the same physical cluster.
+
+Key Features of Kubernetes Namespaces:
+Isolation of Resources: Namespaces create boundaries between different sets of resources (like pods, services, secrets, etc.). Resources within one namespace are logically separated from those in another.
+Scoped Resource Names: Resource names, such as pod names or service names, are unique within a namespace but can be duplicated across namespaces. For example, two different namespaces can have a pod named app-frontend.
+Security and Access Control: Namespaces can be paired with Role-Based Access Control (RBAC) to provide fine-grained access control. You can restrict who can view or modify resources within a particular namespace.
+Quota Management: Resource quotas can be applied at the namespace level. This ensures that a single team or application doesn’t use up more resources than it's allocated.
+Multi-Tenant Clusters: Namespaces are useful in multi-tenant environments where different teams, departments, or environments (development, staging, production) need to share the same Kubernetes cluster.
+Namespace-Specific Configuration: Namespaces allow you to customize configurations like networking policies, resource limits, and monitoring separately for each namespace.
+Default Namespaces in Kubernetes:
+Kubernetes comes with a few default namespaces:
+
+default: The default namespace for resources that don’t specify a namespace.
+kube-system: Used for resources created by Kubernetes itself, such as the control plane components (like the API server, scheduler, etc.).
+kube-public: A namespace that is readable by everyone, including unauthenticated users. Typically used for public resources.
+kube-node-lease: Used for node heartbeat data, to detect node failures quickly.
+
+Common Operations Involving Namespaces:
+Create a Namespace:
+
+kubectl create namespace my-namespace
+
+View Namespace
+
+kubectl get namespaces
+
+Delete Namespace
+
+kubectl delete namespace my-namespace
+
+View Resources in a Specific Namespace:
+
+kubectl get pods --namespace my-namespace
+
+Set Default Namespace for kubectl Commands: You can switch between namespaces by specifying the --namespace flag for each command, or you can set a default namespace for your current context:
+
+kubectl config set-context --current --namespace=my-namespace
+
+
