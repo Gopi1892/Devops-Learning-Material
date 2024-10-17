@@ -1,0 +1,162 @@
+What is Kubernetes?
+Answer: Kubernetes is an open-source container orchestration platform that automates the deployment, scaling, and management of containerized applications. It groups containers into logical units for easy management and discovery.
+What are containers, and why are they important in Kubernetes?
+Answer: Containers are lightweight, portable units that encapsulate an application and its dependencies. They are important in Kubernetes because Kubernetes manages the lifecycle, scaling, and deployment of containers, making applications more resilient and scalable.
+What is a Pod in Kubernetes?
+Answer: A Pod is the smallest deployable unit in Kubernetes. It can consist of one or more containers that share the same network namespace and storage volumes. Pods are ephemeral and are recreated when they fail.
+Explain the difference between a Pod and a container.
+Answer: A container is a lightweight, standalone executable that includes everything needed to run a piece of software. A Pod, on the other hand, can contain multiple containers and is the atomic unit of deployment in Kubernetes.
+What is a node in Kubernetes?
+Answer: A node is a physical or virtual machine on which Kubernetes runs workloads (Pods). It contains the necessary components to run Pods, such as the kubelet, container runtime (like Docker), and kube-proxy.
+What is a Kubernetes cluster?
+Answer: A Kubernetes cluster is a set of worker machines, called nodes, that run containerized applications. A cluster consists of a control plane (master node) and worker nodes.
+What is a Kubelet?
+Answer: Kubelet is an agent that runs on each node in the cluster and ensures that containers are running in a Pod. It communicates with the control plane to manage Pod lifecycle.
+Explain the role of etcd in Kubernetes.
+Answer: etcd is a distributed key-value store that Kubernetes uses to store all cluster data, such as configurations, state, and metadata. It is essential for cluster operations, ensuring consistency across the nodes.
+What are Labels in Kubernetes?
+Answer: Labels are key-value pairs attached to objects like Pods and Nodes that are used to organize and select objects using selectors. Labels can be used for grouping and querying resources.
+What is a Namespace in Kubernetes?
+Answer: Namespaces in Kubernetes provide a way to partition and isolate cluster resources between multiple users or applications. They allow multiple teams to share the same cluster while avoiding name conflicts.
+Architecture & Components
+What is the Control Plane in Kubernetes?
+Answer: The control plane is the core component of the Kubernetes architecture. It manages the cluster's state and includes components like the API Server, Scheduler, Controller Manager, and etcd.
+What is the Kubernetes API Server?
+Answer: The API Server is the central hub that exposes the Kubernetes API and allows users and other components to communicate with the Kubernetes control plane. It handles REST requests and updates etcd accordingly.
+What is a Scheduler in Kubernetes?
+Answer: The Scheduler is responsible for placing Pods onto available nodes based on resource availability and requirements. It monitors the resource consumption on nodes and assigns new Pods to appropriate nodes.
+What is a Controller Manager?
+Answer: The Controller Manager ensures that the desired state of the cluster matches the actual state. It runs various controller loops, such as the Node Controller, Replication Controller, and Endpoints Controller.
+What is kube-proxy?
+Answer: kube-proxy is a network component that runs on every node in the Kubernetes cluster. It is responsible for maintaining network rules that allow Pods to communicate with each other, as well as managing traffic for Services.
+What is a ReplicaSet?
+Answer: A ReplicaSet ensures a specified number of identical Pods are running at any given time. It can create or delete Pods to meet the desired number of replicas.
+Explain the difference between a ReplicaSet and a ReplicationController.
+Answer: ReplicaSet is the newer version of ReplicationController with added support for set-based label selectors. ReplicaSets are more flexible and are typically used as part of Deployments.
+What is a Deployment?
+Answer: A Deployment manages the lifecycle of Pods and ReplicaSets. It provides declarative updates to Pods and ReplicaSets, allowing for rolling updates and rollbacks.
+What is DaemonSet?
+Answer: A DaemonSet ensures that a copy of a Pod runs on all (or some) nodes in a cluster. DaemonSets are often used for logging, monitoring, or other node-specific tasks.
+What is StatefulSet?
+Answer: A StatefulSet is a Kubernetes object used to manage stateful applications. Unlike a Deployment, it provides stable, unique Pod names and persistent storage, ensuring ordered deployment and scaling of Pods.
+Networking
+What is a Service in Kubernetes?
+Answer: A Service in Kubernetes is an abstraction that defines a logical set of Pods and a policy to access them. It provides a stable IP address and DNS name, ensuring reliable communication between different components.
+What are the different types of Services in Kubernetes?
+Answer: The types of services include:
+ClusterIP: Exposes the Service on an internal IP in the cluster.
+NodePort: Exposes the Service on a static port on each node’s IP.
+LoadBalancer: Exposes the Service externally using a cloud provider’s load balancer.
+ExternalName: Maps the Service to the contents of the externalName field (e.g., an external DNS name).
+How do Pods communicate with each other?
+Answer: Pods communicate with each other over a flat network within the cluster. Kubernetes assigns each Pod an IP address, and Pods can communicate without the need for NAT, thanks to CNI (Container Network Interface) plugins.
+What is a CNI (Container Network Interface)?
+Answer: CNI is a specification and set of libraries for configuring network interfaces in Linux containers. In Kubernetes, CNI plugins like Calico, Flannel, and WeaveNet provide networking capabilities, such as routing and policies.
+What is Ingress in Kubernetes?
+Answer: Ingress is an API object that manages external access to services within a cluster, typically HTTP. It provides load balancing, SSL termination, and name-based virtual hosting.
+What is the difference between NodePort and LoadBalancer?
+Answer: NodePort exposes a service on each node's IP at a static port, while LoadBalancer works with cloud providers to provision an external load balancer for a service. NodePort is typically used for testing, whereas LoadBalancer is for production.
+What is kube-dns or CoreDNS?
+Answer: kube-dns (or CoreDNS) provides DNS-based service discovery within Kubernetes. It automatically creates DNS entries for Kubernetes services and allows Pods to discover other services using their DNS names.
+Explain the role of Network Policies in Kubernetes.
+Answer: Network Policies define how Pods can communicate with each other and other network endpoints. They are used to control traffic flow between Pods, adding a layer of security to the cluster.
+What is a Service Mesh?
+Answer: A Service Mesh is a dedicated infrastructure layer that controls service-to-service communication in a microservices architecture. Examples include Istio and Linkerd. It provides features like load balancing, service discovery, and secure communications.
+How do you secure communication between Pods in Kubernetes?
+Answer: You can secure communication between Pods using Network Policies to enforce rules for ingress and egress traffic. Additionally, tools like Istio can provide mutual TLS encryption between services.
+Security
+What is RBAC in Kubernetes?
+Answer: Role-Based Access Control (RBAC) is a method of regulating access to Kubernetes resources based on the roles assigned to users or groups. RBAC is implemented using Roles, ClusterRoles, RoleBindings, and ClusterRoleBindings.
+What is a Role and a ClusterRole?
+Answer: A Role defines permissions within a namespace, while a ClusterRole defines permissions across the entire cluster. Both are part of Kubernetes RBAC for controlling access to resources.
+Explain the difference between RoleBinding and ClusterRoleBinding.
+Answer: RoleBinding grants the permissions defined in a Role to a user or group within a namespace. ClusterRoleBinding does the same but applies the permissions of a ClusterRole across all namespaces.
+How can you secure a Kubernetes cluster?
+Answer: Cluster security can be achieved by:
+Enforcing RBAC for role-based permissions.
+Enabling Network Policies to control traffic flow.
+Using image scanning tools to check for vulnerabilities.
+Encrypting etcd data at rest.
+Ensuring API server security with proper authentication and authorization mechanisms.
+What is a SecurityContext in Kubernetes?
+Answer: A SecurityContext defines the security settings for a Pod or container. It includes settings like user ID (UID), group ID (GID), privilege escalation, and SELinux options.
+What is PodSecurityPolicy (PSP)?
+Answer: A PodSecurityPolicy is a cluster-level resource that controls security-sensitive aspects of the Pod specification, such as privilege escalation, running as root, and host network access. PSP is deprecated and replaced by Pod Security Admission.
+How can you prevent Pods from running as root?
+Answer: You can prevent Pods from running as root by setting a SecurityContext with runAsUser and runAsGroup fields. Additionally, using PodSecurityPolicies (or the new Pod Security Admission) can enforce this at the cluster level.
+What is Kubernetes Secrets?
+Answer: Secrets in Kubernetes are objects used to store sensitive information, such as passwords, OAuth tokens, and SSH keys. Secrets are base64 encoded and can be mounted as files or environment variables in Pods.
+What is ImagePullSecrets?
+Answer: ImagePullSecrets is a Kubernetes object used to authenticate with private container registries. It allows Kubernetes to pull private Docker images when deploying Pods.
+How can you secure the Kubernetes API Server?
+Answer: The Kubernetes API Server can be secured by enabling authentication and authorization mechanisms, using transport layer security (TLS), restricting access using Network Policies, and auditing API calls.
+Storage
+What is a Persistent Volume (PV)?
+Answer: A Persistent Volume (PV) is a storage resource in Kubernetes that is provisioned either statically or dynamically and can be used by Pods. It abstracts the storage details from the user, making storage management easier.
+What is a Persistent Volume Claim (PVC)?
+Answer: A Persistent Volume Claim (PVC) is a request for storage by a user. It binds to a Persistent Volume (PV) and defines the storage requirements like size and access mode.
+What are StorageClasses in Kubernetes?
+Answer: StorageClasses provide a way to define different types of storage (e.g., SSD, HDD) in Kubernetes. They allow dynamic provisioning of Persistent Volumes, depending on the specified class.
+What is dynamic volume provisioning in Kubernetes?
+Answer: Dynamic provisioning allows Kubernetes to automatically create a Persistent Volume (PV) when a Persistent Volume Claim (PVC) is made, without requiring the administrator to manually provision storage.
+Explain the difference between ReadWriteOnce, ReadOnlyMany, and ReadWriteMany in Persistent Volumes.
+Answer: These are access modes for Persistent Volumes:
+ReadWriteOnce (RWO): The volume can be mounted as read-write by a single node.
+ReadOnlyMany (ROX): The volume can be mounted as read-only by multiple nodes.
+ReadWriteMany (RWX): The volume can be mounted as read-write by multiple nodes.
+What is CSI (Container Storage Interface)?
+Answer: CSI is a standard for exposing storage systems to containerized workloads. It allows third-party storage providers to develop drivers that can be used by Kubernetes to provision and manage storage.
+What is ephemeral storage in Kubernetes?
+Answer: Ephemeral storage is temporary storage that is tied to the lifecycle of a Pod. It is used for storing logs, caches, or temporary data and is lost when the Pod is deleted.
+How can you provide persistent storage to a StatefulSet?
+Answer: Persistent storage can be provided to a StatefulSet using Persistent Volume Claims (PVCs). Each replica in a StatefulSet gets its own Persistent Volume, ensuring that data is retained even if the Pod is rescheduled.
+What is volumeMounts in Kubernetes?
+Answer: volumeMounts is a field in the container specification that defines where a volume will be mounted inside the container. It is used to map storage volumes to the container’s filesystem.
+How do you delete a Persistent Volume?
+Answer: A Persistent Volume can be deleted by deleting its corresponding Persistent Volume Claim (PVC) if the reclaim policy is set to "Delete." Alternatively, you can manually delete the PV using the kubectl delete pv command.
+Advanced Topics
+What is Helm in Kubernetes?
+Answer: Helm is a package manager for Kubernetes that allows users to define, install, and upgrade complex Kubernetes applications using Helm Charts, which are pre-configured application templates.
+What is a Helm Chart?
+Answer: A Helm Chart is a collection of files that describe a related set of Kubernetes resources. It simplifies the deployment and management of complex applications by providing reusable templates.
+What is a CRD (Custom Resource Definition)?
+Answer: A Custom Resource Definition (CRD) extends the Kubernetes API by allowing users to define custom resources. This enables developers to create new types of objects that behave like built-in Kubernetes resources.
+What is an Operator in Kubernetes?
+Answer: An Operator is a method of packaging, deploying, and managing a Kubernetes application. Operators extend Kubernetes by using custom resources (CRDs) to manage complex, stateful applications.
+Explain the concept of Blue-Green Deployments in Kubernetes.
+Answer: Blue-Green Deployments involve running two versions of an application (blue and green) simultaneously. One version serves production traffic while the other is prepared for updates. Once the new version is ready, traffic is switched to it.
+What is Canary Deployment in Kubernetes?
+Answer: Canary Deployment is a strategy where a new version of an application is released to a small subset of users before a full rollout. This allows testing of the new version in a real environment while minimizing risk.
+What is Horizontal Pod Autoscaler (HPA)?
+Answer: Horizontal Pod Autoscaler automatically scales the number of Pods in a Deployment or ReplicaSet based on observed CPU/memory utilization or other custom metrics.
+What is Vertical Pod Autoscaler (VPA)?
+Answer: Vertical Pod Autoscaler automatically adjusts the resource limits (CPU and memory) of Pods to match their actual resource usage, ensuring that applications are running efficiently.
+What are Init Containers in Kubernetes?
+Answer: Init containers are specialized containers that run before the main application container in a Pod. They can be used for setup tasks, such as initializing databases or loading configurations.
+What is a Job in Kubernetes?
+Answer: A Job is a Kubernetes resource that runs a Pod to completion. It is used for batch processing or one-off tasks, ensuring that a specified number of successful completions occur.
+Troubleshooting & Monitoring
+How do you check the logs of a Pod?
+Answer: You can check the logs of a Pod using the kubectl logs <pod-name> command. For multi-container Pods, specify the container name with kubectl logs <pod-name> -c <container-name>.
+How do you troubleshoot a failed Pod?
+Answer: To troubleshoot a failed Pod:
+Check Pod status using kubectl get pods.
+Describe the Pod using kubectl describe pod <pod-name>.
+Review Pod logs with kubectl logs.
+Check for events and node issues using kubectl get events.
+How do you restart a Pod in Kubernetes?
+Answer: To restart a Pod, you can delete it using kubectl delete pod <pod-name>. Kubernetes will automatically recreate the Pod if it’s part of a ReplicaSet, Deployment, or StatefulSet.
+What is Prometheus in Kubernetes?
+Answer: Prometheus is an open-source monitoring system that collects and stores metrics from Kubernetes components and applications. It can be used for real-time monitoring and alerting.
+What is Grafana, and how does it integrate with Kubernetes?
+Answer: Grafana is an open-source analytics and monitoring platform. It can be integrated with Prometheus to visualize Kubernetes metrics, allowing users to create dashboards and alerts for cluster health.
+How do you monitor resource usage in Kubernetes?
+Answer: Resource usage in Kubernetes can be monitored using the kubectl top command, which provides metrics for Pods and nodes. Tools like Prometheus, Grafana, and the Kubernetes Metrics Server offer more comprehensive monitoring.
+What is the Metrics Server in Kubernetes?
+Answer: The Metrics Server is a cluster-wide aggregator of resource usage data. It collects metrics from the kubelet running on each node and provides them to the API server for scaling decisions and monitoring.
+How do you set resource requests and limits in Kubernetes?
+Answer: Resource requests and limits can be set in the Pod or container spec using the resources field. Resource requests ensure that a minimum amount of resources (CPU, memory) is allocated, while limits specify the maximum allowed.
+What is kube-state-metrics?
+Answer: kube-state-metrics is a Kubernetes monitoring component that listens to the Kubernetes API and generates metrics about the state of Kubernetes objects, such as deployments, pods, and services.
+How do you handle node failures in Kubernetes?
+Answer: Kubernetes automatically handles node failures by rescheduling Pods on other available nodes.
