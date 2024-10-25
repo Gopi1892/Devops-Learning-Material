@@ -1,0 +1,156 @@
+Ingress in Kubernetes
+Ingress is a Kubernetes resource used to manage external access to services within a Kubernetes cluster, typically for HTTP and HTTPS traffic. Without Ingress, each service in Kubernetes would require its own LoadBalancer or NodePort to expose it externally, which can lead to complex configurations and higher costs. Ingress simplifies this by providing a single entry point to the cluster and managing how external users access internal services.
+
+Key Components of Ingress
+
+Ingress Resource: This is the YAML configuration that defines the routing rules for incoming traffic. It specifies things like:
+Hostnames and Paths: Each path in an Ingress can direct traffic to a specific backend service within the cluster. You can also specify different subdomains (e.g., api.example.com vs. web.example.com) to route requests to different services.
+TLS: Ingress supports Transport Layer Security (TLS) configurations, making it easier to set up HTTPS for your applications by specifying SSL certificates.
+Annotations: Annotations allow customization of Ingress behavior, such as rate-limiting, custom error pages, and session stickiness, depending on the Ingress controller in use.
+Ingress Controller: This is a pod that implements the Ingress resource and actually performs the routing, SSL termination, and load balancing specified in the Ingress resource. Popular Ingress controllers include:
+NGINX Ingress Controller: Provides advanced features like request limiting and redirect rules.
+Traefik: Known for simplicity and ease of configuration, often used in smaller clusters.
+Istio: Provides more advanced routing and security features, suited for complex microservices architectures.
+Load Balancing and Path-Based Routing: Ingress can manage multiple services, each handling traffic for different paths or subdomains, and load-balance traffic to multiple instances of these services. This is especially helpful for managing multiple microservices under a single hostname.
+Example of an Ingress Resource
+
+Here’s an example of a basic Ingress configuration for two services, app1 and app2, with path-based routing:
+
+
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: example-ingress
+spec:
+  rules:
+    - host: example.com
+      http:
+        paths:
+          - path: /app1
+            pathType: Prefix
+            backend:
+              service:
+                name: app1-service
+                port:
+                  number: 80
+          - path: /app2
+            pathType: Prefix
+            backend:
+              service:
+                name: app2-service
+                port:
+                  number: 80
+  tls:
+    - hosts:
+        - example.com
+      secretName: example-com-tls
+
+
+In this configuration:
+
+Requests to example.com/app1 will be routed to app1-service.
+Requests to example.com/app2 will be routed to app2-service.
+The TLS section specifies an SSL certificate for example.com.
+
+
+
+Helm Charts in Kubernetes
+Helm is a package manager for Kubernetes, and Helm Charts are the packages that contain everything needed to deploy a Kubernetes application, including all YAML configuration files, variables, and dependencies. Helm simplifies application management by allowing you to bundle these configurations and reuse them across environments.
+
+Key Components of a Helm Chart
+
+Chart.yaml: This file contains metadata about the chart, like the name, version, and description. It is used by Helm to track different charts and their versions.
+Values.yaml: This file contains default values for variables used in the chart’s templates. Users can override these values at runtime or via custom values.yaml files. For example:
+
+
+
+replicaCount: 2
+image:
+  repository: nginx
+  tag: "1.19.0"
+service:
+  type: ClusterIP
+  port: 80
+ingress:
+  enabled: true
+  hostname: example.com
+
+
+Templates Directory: This directory contains YAML templates for Kubernetes resources (like Deployments, Services, ConfigMaps) that can reference variables defined in Values.yaml. Helm uses Go templates, which means you can apply logic (e.g., conditionals, loops) to dynamically generate configurations.
+Dependencies: Helm Charts can specify other charts as dependencies, which makes it easy to deploy complex applications with multiple components (e.g., a web app with a database).
+Example Structure of a Helm Chart
+
+A typical Helm chart might look like this:
+
+myapp/
+├── Chart.yaml
+├── values.yaml
+└── templates/
+    ├── deployment.yaml
+    ├── service.yaml
+    └── ingress.yaml
+
+
+Defining Ingress within a Helm Chart
+In many cases, your application will need an Ingress resource for external access. You can create an ingress.yaml template within the Helm chart to define this, and then allow customization via values.yaml.
+
+Ingress Template (ingress.yaml)
+
+Here’s an example of what an ingress.yaml file in the templates directory might look like:
+
+{{- if .Values.ingress.enabled }}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ include "myapp.fullname" . }}
+spec:
+  rules:
+    - host: {{ .Values.ingress.hostname }}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ include "myapp.fullname" . }}
+                port:
+                  number: {{ .Values.service.port }}
+  tls:
+    - hosts:
+        - {{ .Values.ingress.hostname }}
+      secretName: {{ .Values.ingress.tlsSecretName }}
+{{- end }}
+
+
+
+Here:
+
+The if .Values.ingress.enabled line allows enabling or disabling Ingress based on the values.yaml file.
+{{ .Values.ingress.hostname }} and {{ .Values.service.port }} allow for dynamic values to be pulled from values.yaml.
+Values File (values.yaml)
+
+The values file allows users to customize Ingress settings. Here’s a sample:
+
+
+ingress:
+  enabled: true
+  hostname: "example.com"
+  tlsSecretName: "example-com-tls"
+service:
+  port: 80
+
+This values.yaml file enables Ingress, specifies the hostname as example.com, and sets a TLS secret. Users can override these values at deployment using --set or a custom values file.
+
+Deploying a Helm Chart with Ingress
+To deploy a Helm chart with Ingress, run:
+
+helm install myapp ./myapp --values custom-values.yaml
+
+
+This command deploys the application according to the values in custom-values.yaml, setting up Ingress and any other configurations defined.
+
+Benefits of Using Ingress and Helm Charts Together
+Simplicity and Reusability: Helm charts bundle configurations, including Ingress, allowing easy re-deployment across environments (dev, staging, production).
+Automated Ingress Management: With Ingress configurations in Helm, you can enable or disable Ingress, set custom domains, and manage SSL without manually editing YAML files.
+Scalability: Ingress enables efficient traffic routing to multiple services, while Helm enables scalable deployments by simplifying infrastructure management and version control.
