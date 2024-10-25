@@ -1,0 +1,33 @@
+The architecture of Prometheus, a powerful open-source monitoring and alerting tool, is designed to collect, store, and query metrics, enabling real-time monitoring and analysis. The architecture is modular, allowing each component to handle specific responsibilities effectively. Here’s an in-depth look at Prometheus' architecture:
+
+1. Prometheus Server
+Data Retrieval & Storage: Prometheus scrapes metrics from target services (using HTTP requests) and stores them locally in a time-series database. This database is designed specifically for high-efficiency writes and queries for time-series data.
+Multi-dimensional Data Model: Prometheus models data using key-value pairs called labels which provide flexibility in organizing and querying metrics. Each time series in Prometheus is uniquely identified by a metric name and a set of labels.
+TSDB (Time-Series Database): Prometheus’s TSDB is optimized for efficient storage and retrieval of time-stamped metrics, even at high cardinality. Metrics are organized into blocks with an efficient on-disk format, allowing quick read and write operations.
+2. Job Exporters
+Purpose: Exporters are lightweight applications that expose metrics from third-party services or systems in Prometheus-compatible format.
+Types:
+Node Exporter: Gathers system metrics (CPU, memory, disk I/O, etc.) from Linux/Unix systems.
+Application-Specific Exporters: Tools like MySQL exporter, Kafka exporter, etc., expose metrics from their respective services.
+Custom Exporters: When native support is unavailable, custom exporters can be written to expose metrics from specialized applications or devices.
+3. Service Discovery
+Automatic Target Detection: Prometheus uses Service Discovery to automatically detect and configure target endpoints. This is essential in dynamic environments like Kubernetes, where services are frequently added or removed.
+Supported Integrations: Prometheus can integrate with multiple service discovery systems, including Kubernetes, Consul, EC2, and Azure. Each integration pulls configuration data to locate instances for metric collection.
+4. Alertmanager
+Alert Rules & Evaluation: Prometheus periodically evaluates defined alert rules. When conditions match, Prometheus sends alert data to Alertmanager.
+Alert Management: Alertmanager deduplicates, groups, and routes alerts to desired endpoints (e.g., Slack, email, PagerDuty). It allows teams to manage notifications with silencing (muting alerts temporarily), grouping (combining related alerts), and inhibition (suppressing alerts based on certain conditions).
+5. PromQL (Prometheus Query Language)
+Querying Metrics: PromQL enables users to query and aggregate metrics for visualizations and alerting. It’s a powerful, time-series-aware query language that supports operations like rate, sum, avg, and count.
+Multi-dimensional Filtering: PromQL’s syntax and label-based filtering allow for complex queries across multiple dimensions, making it ideal for both diagnostics and trend analysis.
+6. Push Gateway
+Handling Short-lived Jobs: While Prometheus typically "pulls" metrics from applications, PushGateway allows short-lived jobs to "push" metrics to Prometheus. This is helpful for batch jobs or one-off tasks that may not be available when Prometheus scrapes.
+Metric Persistence: Metrics sent to PushGateway remain available until overwritten or deleted, allowing Prometheus to collect them during scheduled scrapes.
+7. Grafana (Visualization Layer)
+While not a core part of Prometheus, Grafana is commonly used with Prometheus for visualizing metrics. It offers a flexible dashboard system and supports Prometheus as a data source, making it ideal for creating interactive and real-time monitoring dashboards.
+8. Remote Storage Integrations
+Long-term Storage Solutions: Prometheus's local storage is designed for fast retrieval but is not intended for long-term storage. To support long-term storage, Prometheus can integrate with remote storage backends like Thanos, Cortex, and InfluxDB. This enables teams to store historical data over long periods, beyond Prometheus’s local retention window.
+9. Architecture Flow
+Metric Scraping: Prometheus Server scrapes metrics from exporters and stores the data in the local TSDB.
+Alerting and Querying: Prometheus evaluates rules and sends alerts to Alertmanager. Users can also query Prometheus directly through PromQL for visualization in Grafana or other tools.
+Push and Pull Workflow: While it primarily uses pull-based scraping, PushGateway enables push-based metrics collection for short-lived jobs, increasing flexibility.
+This modular, highly efficient architecture allows Prometheus to scale well in cloud-native and microservices environments, making it a preferred tool for monitoring containerized workloads in Kubernetes and beyond.
