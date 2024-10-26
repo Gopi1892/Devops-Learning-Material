@@ -1,0 +1,246 @@
+AWS Basics
+What is AWS, and what are its key services?
+Answer: AWS (Amazon Web Services) is a cloud platform offering services like compute (EC2), storage (S3), database (RDS), machine learning (SageMaker), and networking (VPC), enabling users to build scalable and reliable applications.
+Explain the different types of cloud computing models.
+Answer: The three main models are:
+IaaS (Infrastructure as a Service): Provides virtualized resources over the internet (e.g., AWS EC2).
+PaaS (Platform as a Service): Provides a platform allowing customers to develop, run, and manage applications (e.g., AWS Elastic Beanstalk).
+SaaS (Software as a Service): Delivers software applications over the internet (e.g., Amazon WorkSpaces).
+What is an AWS Region, and how does it differ from an Availability Zone?
+Answer: An AWS Region is a geographic area containing multiple Availability Zones (AZs). AZs are isolated data centers within a region, providing redundancy to ensure high availability and fault tolerance.
+What is the AWS Free Tier?
+Answer: The AWS Free Tier provides limited, free access to various AWS services for 12 months, allowing users to explore AWS services and build small-scale applications without incurring costs.
+What is Amazon S3, and what are its storage classes?
+Answer: Amazon S3 (Simple Storage Service) is an object storage service. Its storage classes include Standard, Intelligent-Tiering, Standard-IA, One Zone-IA, Glacier, and Glacier Deep Archive, each offering different durability, availability, and cost options.
+AWS Compute
+What is Amazon EC2, and what are some key features?
+Answer: Amazon EC2 (Elastic Compute Cloud) is a service providing resizable compute capacity. Key features include instance types, Elastic IPs, load balancing, autoscaling, and various pricing models (On-Demand, Reserved, Spot Instances).
+Describe the differences between EC2 pricing options.
+Answer:
+On-Demand: Pay-as-you-go pricing for flexible, short-term workloads.
+Reserved Instances: Significant discounts (up to 75%) for committed usage over a 1 or 3-year term.
+Spot Instances: Highly discounted instances (up to 90%) with the possibility of termination if capacity is needed elsewhere.
+Explain Elastic Load Balancing (ELB) and its types.
+Answer: ELB distributes incoming application traffic across multiple targets. Types include Application Load Balancer (layer 7, HTTP/HTTPS traffic), Network Load Balancer (layer 4, TCP/UDP traffic), and Gateway Load Balancer (virtual appliances).
+What is Amazon ECS, and how does it differ from EKS?
+Answer: Amazon ECS (Elastic Container Service) is a container orchestration service using AWS’s own management, while EKS (Elastic Kubernetes Service) is a fully managed Kubernetes service. ECS is simpler for AWS-native container management, whereas EKS is Kubernetes-compliant.
+What is AWS Lambda, and when would you use it?
+Answer: AWS Lambda is a serverless compute service where users run code in response to events without managing servers. It's suitable for event-driven applications like file processing, data streaming, and API backends.
+AWS Storage and Databases
+Explain Amazon RDS and its benefits.
+Answer: Amazon RDS (Relational Database Service) is a managed database service supporting multiple engines (e.g., MySQL, PostgreSQL, MariaDB, SQL Server, Oracle). It offers automated backups, scaling, and maintenance.
+What is Amazon Aurora, and how does it differ from traditional RDS databases?
+Answer: Amazon Aurora is a MySQL- and PostgreSQL-compatible relational database optimized for high performance and scalability. It’s designed to be five times faster than MySQL and offers better fault tolerance and automated recovery.
+How does Amazon DynamoDB differ from Amazon RDS?
+Answer: DynamoDB is a fully managed NoSQL database, optimized for low-latency, high-performance applications. RDS is used for relational databases with structured data and SQL querying, while DynamoDB is more flexible for key-value or document-based data.
+What is AWS Elastic File System (EFS), and how is it used?
+Answer: EFS provides scalable, managed, and elastic network file storage for Linux-based EC2 instances. It’s designed for shared access by multiple EC2 instances and scales automatically to store files from different instances.
+What is Amazon S3 Glacier, and when would you use it?
+Answer: S3 Glacier is a low-cost storage service for long-term data archiving. It’s ideal for data that’s rarely accessed but requires long-term retention, with retrieval options of minutes to hours.
+Networking in AWS
+What is a Virtual Private Cloud (VPC) in AWS?
+Answer: VPC is a virtual network for AWS resources that allows control over IP address ranges, subnets, route tables, and security groups, enabling private, secure connections for resources within AWS.
+Explain the purpose of a security group in AWS.
+Answer: Security groups act as virtual firewalls controlling inbound and outbound traffic to AWS resources, with rules based on IP address ranges and ports.
+What are subnets, and how do they work in AWS?
+Answer: Subnets partition a VPC into smaller IP address ranges. Public subnets are accessible from the internet, while private subnets are restricted, typically hosting sensitive resources.
+What is AWS Direct Connect?
+Answer: AWS Direct Connect provides a dedicated, high-speed connection from an on-premises data center to AWS, reducing latency and improving security compared to internet-based connections.
+What is AWS Route 53?
+Answer: Route 53 is a scalable DNS and domain registration service that directs user requests to AWS resources. It supports traffic management, health checks, and failover routing.
+AWS Security and Identity
+What is AWS Identity and Access Management (IAM)?
+Answer: IAM is a service for securely managing access to AWS resources by creating users, groups, and roles and assigning them permissions based on the principle of least privilege.
+Explain the difference between an IAM role and an IAM user.
+Answer: IAM users are for individuals with long-term credentials, while roles provide temporary access for AWS services or external users to perform specific tasks without permanent credentials.
+What are AWS security best practices?
+Answer: Key practices include enforcing multi-factor authentication (MFA), using IAM roles over root access, applying least privilege principles, enabling CloudTrail, and regular security audits.
+What is Amazon Inspector, and how does it work?
+Answer: Amazon Inspector is a security assessment service for identifying vulnerabilities in EC2 instances and applications, providing findings on security risks and compliance.
+How does AWS KMS (Key Management Service) work?
+Answer: AWS KMS is a managed service for creating and controlling cryptographic keys. It integrates with various AWS services to encrypt data at rest and in transit securely.
+AWS Application Services
+What is Amazon SNS, and how does it work?
+Answer: Amazon SNS (Simple Notification Service) is a messaging service for sending notifications to distributed systems via email, SMS, HTTP endpoints, or Lambda.
+What is Amazon SQS, and how does it differ from SNS?
+Answer: SQS (Simple Queue Service) is a message queuing service that decouples application components. Unlike SNS (which is a publish-subscribe model), SQS stores messages for asynchronous processing.
+What is AWS Elastic Beanstalk?
+Answer: Elastic Beanstalk is a PaaS for deploying and managing applications. It automates infrastructure provisioning and scaling, allowing developers to focus on code.
+Explain Amazon CloudFront and its use cases.
+Answer: CloudFront is a CDN that caches content at edge locations worldwide to reduce latency. It’s used for distributing web content globally, improving response times for users.
+How does AWS Step Functions work?
+Answer: AWS Step Functions coordinate and visualize workflows across AWS services, executing tasks sequentially or in parallel, making it ideal for complex, multi-step applications.
+Monitoring and Optimization
+What is Amazon CloudWatch, and what can it monitor?
+Answer: CloudWatch monitors AWS resources and applications, collecting metrics, logs, and setting alarms for events, enabling proactive management and troubleshooting.
+How do you optimize EC2 instances for cost savings?
+Answer: Cost optimization strategies include right-sizing instances, using Reserved or Spot Instances, and stopping instances when idle. Implementing Auto Scaling also helps by scaling resources based on demand.
+What is AWS Trusted Advisor?
+Answer: Trusted Advisor provides insights into best practices for cost optimization, performance, security, fault tolerance, and service limits, guiding users to improve their AWS environment.
+Explain how AWS Cost Explorer helps manage AWS costs.
+Answer: Cost Explorer provides detailed insights into AWS spending, enabling users to visualize costs, track usage, and identify trends for efficient resource planning.
+What is AWS Config, and how does it assist in governance?
+Answer: AWS Config continuously monitors and records AWS resource configurations, enabling governance, compliance, and auditing by tracking resource changes.
+Serverless and Advanced Services
+How does Amazon API Gateway work?
+Answer: API Gateway manages APIs, enabling developers to create, publish, secure, and monitor APIs for accessing backend services, often paired with Lambda functions for serverless architectures.
+What is Amazon Athena, and when would you use it?
+Answer: Athena is a serverless query service for analyzing data in S3 using SQL. It’s useful for ad-hoc data analysis and integrates well with BI tools without the need for a database setup.
+How does Amazon Kinesis differ from SQS and SNS?
+Answer: Kinesis is a real-time data streaming service optimized for high-frequency, large-scale data ingestion. Unlike SQS and SNS, Kinesis enables continuous processing of data streams.
+What is Amazon SageMaker, and what are its primary use cases?
+Answer: SageMaker is a machine learning service that simplifies building, training, and deploying ML models, commonly used for tasks like predictive analytics, natural language processing, and computer vision.
+Explain the concept of serverless architecture.
+Answer: Serverless architecture allows developers to build and run applications without managing servers, relying on services like AWS Lambda and API Gateway to handle infrastructure, scaling, and execution.
+Troubleshooting and Best Practices
+How would you troubleshoot an EC2 instance that won’t start?
+Answer: Check EC2 instance status checks, verify IAM role permissions, review instance logs in CloudWatch, confirm that the EBS volumes are attached, and ensure there’s no security group restriction.
+What is the Shared Responsibility Model in AWS?
+Answer: In the Shared Responsibility Model, AWS manages the security of the cloud (infrastructure), while customers manage the security in the cloud (data, access controls, configuration).
+How do you implement Multi-AZ for high availability in RDS?
+Answer: Multi-AZ deployment automatically replicates data across two Availability Zones, providing failover support for database instances, which improves availability during outages.
+How can you secure an S3 bucket?
+Answer: Use IAM policies, S3 bucket policies, Access Control Lists (ACLs), enable encryption (SSE-S3, SSE-KMS), and configure logging. Blocking public access prevents unauthorized access.
+How would you handle data migration to AWS?
+Answer: Data migration methods include AWS DataSync, Snowball, or S3 Transfer Acceleration for larger datasets, while Database Migration Service (DMS) is suitable for database transfers.
+What is VPC Peering?
+Answer: VPC Peering allows direct communication between VPCs in the same or different AWS accounts or regions, enabling resource sharing without using the internet.
+How does Amazon CloudTrail work?
+Answer: CloudTrail records account activity across AWS services, enabling auditing, compliance monitoring, and detecting anomalous behavior by tracking API calls.
+How do you monitor database performance in RDS?
+Answer: Use CloudWatch metrics for CPU, memory, I/O, and database-specific metrics, along with Enhanced Monitoring and Performance Insights for detailed performance analytics.
+What are some ways to ensure disaster recovery in AWS?
+Answer: Options include backups, cross-region replication (e.g., S3 CRR, RDS Read Replicas), Multi-AZ setups, and using AWS Backup for centralized backup management.
+Explain the principle of least privilege and its importance in AWS.
+Answer: The principle of least privilege ensures that users have the minimal level of access necessary, reducing the risk of accidental or malicious data exposure and enhancing overall security.
+
+
+What is the difference between EBS and instance store?
+Answer: Amazon EBS (Elastic Block Store) provides persistent block storage that can be attached to EC2 instances, surviving instance termination. Instance store, on the other hand, provides temporary storage that is physically attached to the host and is lost if the instance is stopped or terminated.
+What are the key features of AWS Lambda?
+Answer: Key features of AWS Lambda include automatic scaling, event-driven execution, support for multiple programming languages, integration with various AWS services, and the ability to run code in response to specific triggers, such as changes in data or system events.
+Explain AWS Elastic Beanstalk’s environment tiers.
+Answer: Elastic Beanstalk has two environment tiers:
+Web server environment: For applications that handle HTTP requests.
+Worker environment: For background processing tasks that are not directly connected to a web server.
+What is AWS Outposts, and when would you use it?
+Answer: AWS Outposts extends AWS infrastructure to on-premises locations, providing a fully managed service to run AWS services locally. It's used for low-latency applications, data residency requirements, or specific regulatory compliance.
+What is Amazon QuickSight?
+Answer: Amazon QuickSight is a cloud-based business intelligence service that enables users to visualize data, create interactive dashboards, and perform ad-hoc analysis. It integrates with various AWS data sources and supports embedded analytics.
+AWS Networking
+What is an Internet Gateway in a VPC?
+Answer: An Internet Gateway is a VPC component that enables communication between resources in a VPC and the internet. It allows inbound and outbound traffic for public subnets and supports elasticity and high availability.
+What are Network ACLs, and how do they differ from security groups?
+Answer: Network ACLs (Access Control Lists) are stateless firewalls that control inbound and outbound traffic at the subnet level, applying rules for IP address ranges and protocols. In contrast, security groups are stateful, managing traffic at the instance level and remembering the return traffic.
+What is AWS Transit Gateway?
+Answer: AWS Transit Gateway simplifies network architectures by connecting multiple VPCs and on-premises networks through a single gateway. It enables efficient routing, bandwidth allocation, and management of network traffic.
+How does AWS PrivateLink work?
+Answer: AWS PrivateLink provides private connectivity between VPCs and AWS services without exposing traffic to the public internet. It allows users to securely access services using private IP addresses.
+What is Amazon VPC Flow Logs?
+Answer: VPC Flow Logs capture information about the IP traffic going to and from network interfaces in a VPC. They help in monitoring, troubleshooting, and analyzing network traffic patterns.
+AWS Security and Compliance
+What is the purpose of AWS Shield?
+Answer: AWS Shield is a managed Distributed Denial of Service (DDoS) protection service that safeguards applications running on AWS. It offers two tiers: Standard (automatic protection for all AWS customers) and Advanced (additional protections and 24/7 access to the DDoS response team).
+Explain AWS WAF and its use cases.
+Answer: AWS WAF (Web Application Firewall) protects web applications by filtering and monitoring HTTP/HTTPS requests. It helps prevent common web exploits, including SQL injection and cross-site scripting (XSS), and can block requests based on rules set by the user.
+What is Amazon GuardDuty?
+Answer: Amazon GuardDuty is a threat detection service that continuously monitors AWS accounts and workloads for malicious activity and unauthorized behavior, providing actionable security alerts.
+How do you implement logging and monitoring in AWS?
+Answer: Logging and monitoring can be implemented using AWS CloudTrail for API activity logging, CloudWatch for monitoring resource metrics and setting alarms, and AWS Config for resource configuration tracking and compliance auditing.
+What is the AWS Well-Architected Framework?
+Answer: The AWS Well-Architected Framework provides best practices and guidelines for building secure, high-performing, resilient, and efficient infrastructure for applications in the cloud. It consists of five pillars: operational excellence, security, reliability, performance efficiency, and cost optimization.
+AWS Management and Automation
+What is AWS CloudFormation, and how does it work?
+Answer: AWS CloudFormation is an infrastructure as code (IaC) service that allows users to define and provision AWS resources using templates. Users create JSON or YAML templates describing the desired resources, which CloudFormation uses to automatically create and manage the specified infrastructure.
+Explain the concept of tags in AWS and their importance.
+Answer: Tags are key-value pairs assigned to AWS resources for organization, cost tracking, and automation. They help manage and categorize resources, allowing for easier billing analysis, resource management, and implementation of automation scripts.
+What is AWS Systems Manager, and what features does it provide?
+Answer: AWS Systems Manager is a management service that provides operational data and automation capabilities for AWS resources. Features include Run Command, Patch Manager, Session Manager, and Parameter Store for managing configurations and secrets.
+How do you manage configurations in AWS?
+Answer: Configuration management can be achieved through AWS Systems Manager for automation, AWS Config for compliance monitoring, and AWS CloudFormation for deploying resources based on versioned templates.
+What is Amazon EventBridge?
+Answer: Amazon EventBridge is a serverless event bus service that connects applications using events generated from AWS services, custom applications, and SaaS applications. It enables event-driven architectures and supports complex event routing and transformation.
+Architectural Patterns and Best Practices
+Explain the concept of microservices architecture in AWS.
+Answer: Microservices architecture involves designing applications as a collection of loosely coupled services, each responsible for a specific function. AWS services like Lambda, ECS, and API Gateway support microservices by providing scalability, fault isolation, and ease of deployment.
+How would you design a highly available architecture in AWS?
+Answer: A highly available architecture can include:
+Multi-AZ deployments for databases.
+Elastic Load Balancing across multiple instances in different AZs.
+Auto Scaling for dynamically adjusting capacity.
+S3 for durable data storage and backup solutions.
+What are some design considerations for serverless architectures?
+Answer: Considerations include managing state (using DynamoDB or S3), monitoring and logging (CloudWatch), cold start performance, service limits, security (IAM roles), and API Gateway configurations.
+How do you implement blue-green deployments in AWS?
+Answer: Blue-green deployments can be implemented using Elastic Beanstalk or ECS by maintaining two separate environments (blue and green) and switching traffic between them using an Application Load Balancer once the new version is validated.
+What is the 12-factor app methodology, and how does it relate to AWS?
+Answer: The 12-factor app methodology provides a set of principles for building scalable and maintainable applications. In AWS, it emphasizes using services like Elastic Beanstalk for deployment, RDS for databases, and CloudWatch for monitoring, aligning with cloud-native practices.
+Real-World Scenarios and Problem Solving
+How do you handle data backups and restore processes in AWS?
+Answer: Data backups can be managed using AWS Backup for centralized backup management, leveraging S3 versioning, RDS automated backups, and EBS snapshots. Restore processes involve following documented procedures and testing recovery in staging environments.
+What strategies would you implement to reduce AWS costs?
+Answer: Strategies include right-sizing resources, utilizing Reserved Instances or Savings Plans, using Spot Instances, implementing Auto Scaling, and analyzing costs using AWS Cost Explorer and Trusted Advisor recommendations.
+How would you migrate an on-premises application to AWS?
+Answer: Migration can follow the AWS Migration Framework, including phases like assessing the current environment, selecting the right migration strategy (lift and shift, replatforming), executing the migration using tools like AWS Migration Hub or Database Migration Service, and optimizing the AWS environment post-migration.
+What is the importance of load testing in AWS, and how would you perform it?
+Answer: Load testing is crucial to determine system behavior under high traffic. It can be performed using tools like Apache JMeter or AWS CloudWatch for monitoring performance metrics during simulated load conditions, ensuring the architecture can handle expected traffic.
+How would you design an application that requires multi-region redundancy?
+Answer: A multi-region architecture can include:
+Replicating databases across regions using Amazon RDS or DynamoDB global tables.
+Using Route 53 for DNS failover.
+Deploying resources in multiple regions and using CloudFront for global content distribution.
+Advanced Topics and Best Practices
+What are AWS Service Quotas, and how can they affect your deployments?
+Answer: AWS Service Quotas (formerly known as limits) define the maximum number of resources or operations allowed for a particular AWS service. Understanding and managing these quotas is crucial to avoid service disruptions during scaling or deployment.
+How do you implement CI/CD pipelines using AWS services?
+Answer: CI/CD pipelines can be implemented using AWS CodePipeline for orchestration, CodeBuild for building applications, CodeDeploy for deploying to various targets, and integrating with GitHub or AWS CodeCommit for source code management.
+What is the difference between Amazon Aurora and Amazon RDS?
+Answer: Amazon Aurora is a MySQL and PostgreSQL-compatible relational database service designed for higher performance and availability than standard RDS. It offers features like automatic scaling, replication across multiple availability zones, and self-healing storage.
+How do you secure data at rest and in transit in AWS?
+Answer: Data at rest can be secured using AWS Key Management Service (KMS) for encryption, S3 bucket policies, and EBS encryption. Data in transit is secured using SSL/TLS for data transfer and VPC Peering or VPN connections for secure communication.
+What strategies would you use to ensure application performance in AWS?
+Answer: Strategies include:
+Utilizing caching services like Amazon ElastiCache.
+Implementing Auto Scaling to adjust capacity based on load.
+Monitoring application performance with CloudWatch and X-Ray.
+Optimizing database queries and indexing.
+Compliance and Governance
+How do you ensure compliance with industry standards (e.g., HIPAA, PCI-DSS) in AWS?
+Answer: Ensuring compliance involves leveraging AWS Compliance programs, using services designed for compliance (e.g., AWS Shield for DDoS protection), maintaining audit trails with CloudTrail, and implementing security best practices as outlined in the AWS Well-Architected Framework.
+What is AWS Organizations, and how does it help manage multiple AWS accounts?
+Answer: AWS Organizations allows users to create and manage multiple AWS accounts centrally. It helps with consolidated billing, policy-based management, and applying Service Control Policies (SCPs) across accounts for governance and compliance.
+Explain the AWS Security Hub and its benefits.
+Answer: AWS Security Hub provides a centralized view of security alerts and compliance status across AWS accounts. It aggregates findings from various AWS security services and third-party tools, enabling users to prioritize security responses and maintain compliance.
+How do you implement user access controls in AWS?
+Answer: User access controls can be implemented using IAM policies to define permissions, multi-factor authentication (MFA) for enhanced security, and AWS Single Sign-On for managing user access across multiple accounts and applications.
+What is Amazon Macie, and how does it help with data security?
+Answer: Amazon Macie is a security service that uses machine learning to discover, classify, and protect sensitive data in AWS, such as personally identifiable information (PII) in S3. It helps automate data security monitoring and compliance efforts.
+Integration and Extensibility
+How do you integrate AWS services with third-party applications?
+Answer: Integration can be achieved using APIs, SDKs, and AWS Lambda for serverless event-driven architectures. AWS AppSync can facilitate GraphQL-based APIs, and Amazon EventBridge allows connecting third-party SaaS applications to AWS services.
+What is AWS Step Functions, and how does it aid in application orchestration?
+Answer: AWS Step Functions is a serverless orchestration service that enables users to coordinate multiple AWS services into workflows, allowing for the design of complex applications by managing state and workflow logic.
+How do you utilize Amazon Elastic Search Service?
+Answer: Amazon Elasticsearch Service allows users to deploy, manage, and scale Elasticsearch clusters. It can be used for log analysis, full-text search, and real-time data visualization in conjunction with Kibana for dashboards.
+What are the benefits of using Amazon CloudFront as a content delivery network (CDN)?
+Answer: CloudFront offers low-latency content delivery by caching content at edge locations, providing enhanced security with features like SSL/TLS, DDoS protection, and seamless integration with AWS services like S3 and EC2.
+Explain the role of AWS Glue in data processing.
+Answer: AWS Glue is a serverless data integration service that simplifies data preparation for analytics. It enables users to discover, catalog, clean, and transform data in various sources, making it easier to analyze with services like Amazon Athena and Redshift.
+Disaster Recovery and Business Continuity
+What are the different AWS backup strategies you can implement?
+Answer: Backup strategies can include:
+Automated backups of RDS databases.
+EBS snapshots for persistent volumes.
+AWS Backup for centralized backup management across AWS services.
+Cross-region replication for S3 buckets.
+How would you implement a disaster recovery plan in AWS?
+Answer: A disaster recovery plan can be implemented using:
+Backup and restore strategies for critical data.
+Pilot light or warm standby architectures with essential resources running in a secondary region.
+Multi-region active-active configurations for high availability.
+How does AWS Route 53 help in disaster recovery?
+Answer: AWS Route 53 is a scalable DNS service that supports health checks and DNS failover. It can automatically route traffic to healthy endpoints in different regions during outages, enhancing application availability.
+What role does AWS Backup play in data protection?
+Answer: AWS Backup is a fully managed backup service that automates backup scheduling and retention for AWS resources, providing centralized backup management across various services, thus ensuring data protection and compliance.
+How would you test your disaster recovery plan in AWS?
+Answer: Testing a disaster recovery plan involves conducting regular simulations of failover processes, validating the restoration of data from backups, testing application performance in the recovery environment, and reviewing and updating documentation for improvements.
