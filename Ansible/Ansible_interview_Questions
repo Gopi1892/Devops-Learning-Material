@@ -1,0 +1,120 @@
+Basic Questions
+What is Ansible, and how does it work?
+Answer: Ansible is an open-source automation platform designed to simplify IT infrastructure management. It works by pushing configurations or commands to managed nodes over SSH (for Linux) or WinRM (for Windows). Being agentless, it requires no additional software installation on the target systems. Ansible uses modules to execute commands, applying configurations in an idempotent way (only changes things if needed).
+What are the core components of Ansible?
+Answer: The core components are:
+Control Node: The machine where Ansible is installed and run.
+Managed Nodes: The remote systems Ansible controls.
+Inventory: A file listing hosts and grouping them.
+Modules: Ansible’s reusable scripts that handle tasks.
+Playbooks: YAML files defining automation workflows.
+Roles: Reusable task sets for modular playbooks.
+Explain the difference between Ansible and other configuration management tools like Chef or Puppet.
+Answer: Ansible uses a push model, unlike the pull models of Chef and Puppet. It’s agentless, making it easy to deploy and maintain, while Puppet and Chef often require agents and more setup complexity. Ansible’s YAML syntax is also simpler, making it more accessible.
+How is Ansible agentless, and what are its advantages?
+Answer: Ansible doesn’t require an agent on managed nodes; it communicates via SSH or WinRM. Advantages include ease of setup, reduced maintenance, and fewer security concerns as there’s no additional software running on target systems.
+What programming language does Ansible use?
+Answer: Ansible itself is built in Python, and most of its core modules are written in Python. However, playbooks use YAML for configuration, and custom modules can be written in any language that can return JSON.
+Explain what YAML is and why Ansible uses it.
+Answer: YAML (Yet Another Markup Language) is a human-readable, data serialization format. Ansible uses it for its clarity and simplicity, allowing configuration in an easily understood, hierarchical structure.
+How does Ansible manage credentials?
+Answer: Through several methods:
+Ansible Vault for encrypting sensitive information.
+SSH Keys for secure access.
+Integration with external secrets management tools like AWS Secrets Manager or HashiCorp Vault.
+Inventory and Configuration
+What is an Ansible inventory file, and what types are there?
+Answer: The inventory file lists managed hosts and groups. Types include:
+Static Inventory: A predefined list in INI or YAML format.
+Dynamic Inventory: Dynamically generates a list from cloud providers (e.g., AWS, GCP).
+How do you define host groups in an inventory file?
+Answer: Define groups with brackets:
+[webservers]
+server1 ansible_host=192.168.1.10
+
+server1 ansible_host=192.168.1.10
+What is the purpose of a dynamic inventory, and how do you configure it?
+Answer: A dynamic inventory retrieves hosts in real-time, ideal for cloud infrastructure. Configure by using an executable script or plugin for the cloud provider.
+
+
+What is the purpose of a dynamic inventory, and how do you configure it?
+Answer: A dynamic inventory retrieves hosts in real-time, ideal for cloud infrastructure. Configure by using an executable script or plugin for the cloud provider.
+Explain the host pattern syntax in Ansible and how to use it.
+Answer: Host patterns control which hosts a playbook targets. They use symbols like * (wildcard) or ! (exclusion). Example: webservers:!dbservers.
+Ansible Playbooks
+What is an Ansible playbook, and how is it structured?
+Answer: A playbook is a YAML file with a series of tasks for automation. Each play targets specific hosts and defines tasks using modules.
+How do you execute a playbook, and what command options can you use?
+Answer: Run with ansible-playbook playbook.yml. Useful options include --check for dry-runs and --limit for targeting specific hosts.
+What is the difference between a playbook and a play in Ansible?
+Answer: A playbook contains plays. Each play targets a set of hosts and has a sequence of tasks to be applied.
+Explain how task execution order is determined in Ansible playbooks.
+Answer: Tasks are executed sequentially from top to bottom for each host in the play.
+How do you run a playbook on a specific group or host?
+Answer: Use the --limit flag, like ansible-playbook playbook.yml --limit webservers.
+What is idempotency in Ansible, and why is it important?
+Answer: Idempotency means a task only changes the target if needed. It’s important because it ensures tasks can run multiple times without unintended side effects.
+How can you dry-run an Ansible playbook?
+Answer: Use the --check flag to simulate the playbook execution without applying changes.
+Ansible Modules
+What are Ansible modules, and why are they important?
+Answer: Modules are reusable scripts for tasks (e.g., installing software). They abstract tasks, making playbooks simpler and more consistent.
+Describe some commonly used Ansible modules.
+Answer:
+apt/yum: For package management.
+copy: Copies files to managed nodes.
+user: Manages user accounts.
+How do you create custom modules in Ansible?
+Answer: Write a script (usually in Python) that accepts input arguments, performs an action, and outputs JSON with success/failure.
+Explain the difference between command and shell modules.
+Answer: command is more secure and doesn’t use a shell, while shell allows full shell commands but requires caution due to security risks.
+How do you use the setup module in Ansible, and what is it used for?
+Answer: It gathers system facts like OS, memory, and IP addresses, which can be used in conditionals or variables.
+Variables and Conditionals
+What are Ansible variables, and where can you define them?
+Answer: Variables store data for playbooks. Define them in inventories, playbooks, or extra vars (-e on the command line).
+Explain the variable precedence in Ansible.
+Answer: Variable precedence, from highest to lowest:
+Extra variables, playbook variables, role variables, inventory variables.
+How do you pass variables to a playbook from the command line?
+Answer: Using -e:
+
+ansible-playbook playbook.yml -e "var=value"
+
+How do you use conditionals in Ansible?
+Answer: Using the when directive to execute tasks only if conditions are met.
+Loops, Handlers, and Templates
+Explain the purpose of loops in Ansible. How are they implemented?
+Answer: Loops repeat tasks for lists. Use the loop keyword:
+
+- name: Install packages
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - nginx
+    - curl
+
+
+What are handlers in Ansible, and when do you use them?
+Answer: Handlers perform actions when triggered by other tasks. Commonly used to restart services after configuration changes.
+What is a Jinja2 template, and how is it used in Ansible?
+Answer: Jinja2 is a templating language for dynamic configuration files. Use the template module to apply them.
+Provide an example of using a template to generate a configuration file.
+Answer:
+- name: Deploy config
+  template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/nginx.conf
+
+What is a notify directive, and how does it work in Ansible?
+Answer: notify triggers handlers when tasks are successful, ensuring updates (e.g., service restarts) occur only when needed.
+Roles and Reusability
+What are roles in Ansible, and why are they useful?
+Answer: Roles organize tasks, handlers, variables, and templates into reusable components for modular automation.
+Describe the structure of an Ansible role.
+Answer: A role has specific directories (e.g., tasks, handlers, files, templates) to organize its components.
+How do you import a role from Ansible Galaxy?
+Answer: Use the ansible-galaxy command:
+
+ansible-galaxy install geerlingguy.apache
