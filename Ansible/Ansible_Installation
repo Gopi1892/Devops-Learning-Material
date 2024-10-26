@@ -1,0 +1,23 @@
+Launch an ubuntu EC2 Instance
+
+Install ansible
+
+sudo apt install software-properties-common
+sudo add-apt-repository --yes --update ppa:ansible/ansible
+sudo apt install ansible
+
+
+Verify Installation
+
+ansible --version
+
+
+You should see output similar to this:
+
+ansible 2.10.0
+  config file = /etc/ansible/ansible.cfg
+  configured module search path = ['/usr/share/ansible', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3/dist-packages/ansible
+  executable location = /usr/bin/ansible
+  python version = 3.8.5 (default, Aug  4 2020, 08:11:26) [GCC 9.3.0]
+
