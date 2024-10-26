@@ -1,0 +1,142 @@
+Terraform Basics
+What is Terraform, and what is its primary purpose?
+Answer: Terraform is an open-source Infrastructure as Code (IaC) tool developed by HashiCorp. It automates infrastructure management by using declarative configurations to create, update, and manage resources across different cloud platforms. Its primary purpose is to enable infrastructure provisioning in a consistent and reproducible manner.
+How does Terraform work? Explain the workflow.
+Answer: Terraform operates in three main stages:
+Write: Define infrastructure as code using HashiCorp Configuration Language (HCL).
+Plan: Preview changes to ensure they align with the desired state.
+Apply: Apply configurations to achieve the defined state.
+What is Infrastructure as Code (IaC), and how does Terraform implement it?
+Answer: IaC is a methodology to define and provision infrastructure using code, enabling consistency, versioning, and automation. Terraform implements IaC using HCL files, where resources and dependencies are declared and managed declaratively.
+Describe the declarative nature of Terraform.
+Answer: In a declarative language, users specify the desired end-state (e.g., a running VM) without explicitly defining the steps. Terraform evaluates the current state and takes the necessary actions to match the desired configuration, making it more predictable and easier to manage.
+What are Terraform providers, and how are they used?
+Answer: Providers are plugins that enable interaction with APIs of various platforms (e.g., AWS, Azure, GCP). Providers allow Terraform to manage resources across these platforms. A provider is configured in .tf files before defining resources for that provider.
+Terraform Configuration and Components
+What is a Terraform resource, and how is it defined?
+Answer: Resources represent individual components (e.g., compute instances, databases). A resource block is defined with a type, name, and configuration properties:
+resource "aws_instance" "example" {
+  ami           = "ami-123456"
+  instance_type = "t2.micro"
+}
+
+
+Explain Terraform variables and their purpose.
+Answer: Variables allow users to define input values that make configurations flexible and reusable. They are defined in a variables.tf file and can be provided through CLI flags, environment variables, or .tfvars files.
+What are output values in Terraform, and why are they used?
+Answer: Output values return information from a Terraform configuration, such as resource IDs or IP addresses, which can be used in other configurations or displayed to users after an apply.
+How do you handle sensitive data in Terraform configurations?
+Answer: Sensitive data can be managed using the sensitive = true attribute in variables or outputs, and by using tools like HashiCorp Vault, environment variables, or encrypted storage for .tfstate files.
+What is a Terraform module, and why are modules important?
+Answer: A module is a reusable set of Terraform resources. Modules promote consistency, scalability, and reduce code duplication by allowing configurations to be organized and reused across environments or projects.
+Terraform State
+What is the Terraform state file, and why is it important?
+Answer: The state file (terraform.tfstate) maintains the current state of infrastructure, which Terraform uses to detect changes. It’s crucial for tracking and managing resources.
+Explain the purpose of terraform import.
+Answer: terraform import allows importing existing resources into Terraform’s state, enabling management of resources created outside of Terraform without recreating them.
+What are remote state files, and when should you use them?
+Answer: Remote state stores the Terraform state file in a remote location (e.g., S3, Azure Blob, GCS). It’s beneficial in collaborative environments to prevent conflicts and allow centralized state management.
+How does Terraform handle state locking?
+Answer: State locking prevents simultaneous operations on the state file, reducing race conditions. Remote state backends like S3 with DynamoDB provide locking capabilities.
+What is the terraform state command used for?
+Answer: The terraform state command manipulates the state file directly, enabling operations like listing resources, renaming them, or moving resources between configurations.
+Terraform CLI Commands
+Explain the purpose of terraform init.
+Answer: terraform init initializes a configuration directory, downloads necessary provider plugins, and sets up the working directory.
+What does the terraform plan command do?
+Answer: terraform plan previews changes that will be made to achieve the desired state without applying them. It helps users review the impact of changes before execution.
+Describe the purpose of terraform apply.
+Answer: terraform apply executes changes in the infrastructure to align with the defined configuration. It prompts for confirmation unless run with -auto-approve.
+How is terraform destroy used?
+Answer: terraform destroy removes all resources managed by a configuration, useful for tearing down entire environments.
+What does terraform fmt do, and why is it important?
+Answer: terraform fmt formats Terraform code files according to standard style conventions, improving readability and consistency.
+Terraform Variables and Expressions
+What is variable interpolation, and how is it done in Terraform?
+Answer: Variable interpolation embeds variable values within strings, typically using ${} syntax. For example:
+
+resource "aws_instance" "example" {
+  ami           = var.ami_id
+  instance_type = "${var.instance_type}"
+}
+
+Explain conditional expressions in Terraform.
+Answer: Conditional expressions allow logic within configurations. For example:
+
+instance_type = var.is_prod ? "t2.large" : "t2.micro"
+
+What are locals in Terraform, and how are they used?
+Answer: locals allow users to assign values to expressions that can be reused. They improve readability and reduce duplication:
+
+locals {
+  instance_size = "t2.micro"
+}
+
+How do you set variable values for different environments in Terraform?
+Answer: Use .tfvars files (like prod.tfvars) for each environment or set variables through environment-specific input variables.
+Describe count and for_each in Terraform.
+Answer: count and for_each dynamically create multiple resource instances based on the input:
+count is an integer-based loop.
+for_each iterates over a map or set of strings.
+Terraform Modules
+What is a root module in Terraform?
+Answer: The root module is the main module within a Terraform configuration directory, where resources and child modules are defined.
+How do you create and use a module in Terraform?
+Answer: Define a module in a separate directory and use the module block to call it:
+
+module "network" {
+  source = "./modules/network"
+  ...
+}
+
+Explain the source attribute in a module.
+Answer: The source attribute defines where the module’s code is located, which can be local paths or remote sources (e.g., Git, Terraform Registry).
+How does Terraform handle module versioning?
+Answer: When pulling from a module registry or remote source, specify a version using version. Module versioning ensures consistency and prevents unexpected changes.
+What are module outputs, and how do you use them?
+Answer: Module outputs expose values from a module to other parts of the configuration, such as resource IDs or endpoint URLs.
+Terraform Advanced Concepts
+Explain terraform workspace and its purpose.
+Answer: Workspaces allow managing multiple environments (e.g., dev, prod) within the same configuration directory by maintaining separate state files.
+What is data in Terraform, and why is it used?
+Answer: The data block retrieves external information, like existing cloud resources, without modifying them. For example, fetching an existing AMI ID.
+Describe lifecycle and its prevent_destroy attribute in Terraform.
+Answer: The lifecycle block controls resource behavior, with prevent_destroy preventing accidental resource deletion.
+What is the depends_on argument in Terraform?
+Answer: depends_on enforces resource creation order, ensuring dependencies are created before dependent resources.
+How does count differ from for_each in Terraform?
+Answer: count works with integers to create multiple instances, while for_each iterates over lists or maps, providing more control and flexibility.
+
+Terraform Backends and State Management
+What is a backend in Terraform?
+Answer: A backend determines where the Terraform state is stored (e.g., locally or remotely).
+Explain the purpose of the S3 backend in Terraform.
+Answer: The S3 backend stores state files on AWS S3, allowing versioning and redundancy. Paired with DynamoDB, it enables state locking.
+What is state locking, and why is it important?
+Answer: State locking prevents concurrent state changes, reducing the risk of race conditions in collaborative environments.
+How do you migrate a state file to a remote backend?
+Answer: Update the backend configuration, then run terraform init, and Terraform will prompt to move the state file.
+Describe the terraform_remote_state data source.
+Answer: terraform_remote_state retrieves output values from another state file, useful for cross-project dependencies.
+Terraform Best Practices
+How do you structure a large Terraform project?
+Answer: Organize code into modules, use separate directories for environments, and apply version control to manage changes.
+What are some Terraform security best practices?
+Answer: Encrypt state files, use secure backends (e.g., S3 with IAM), avoid hardcoding sensitive data, and use Terraform Cloud for secrets management.
+Explain the purpose of terraform validate.
+Answer: terraform validate checks configuration syntax, ensuring code correctness without applying it.
+What is terraform taint, and how does it work?
+Answer: terraform taint marks a resource for recreation during the next apply, often used for troubleshooting or reinitializing resources.
+How do you handle drift detection in Terraform?
+Answer: Run terraform plan regularly to detect configuration drift, and use tools like Terraform Cloud for continuous drift detection.
+Scenario-Based Questions
+How would you set up a multi-region infrastructure in Terraform?
+Answer: Use modules for reusable infrastructure components and separate workspaces or state files for each region.
+How do you handle resource dependencies in Terraform?
+Answer: Use implicit dependencies by referencing resource attributes, or use depends_on for explicit ordering.
+What would you do if a Terraform apply failed due to a resource conflict?
+Answer: Use terraform refresh to update the state, or import the conflicting resource if it exists outside of Terraform.
+How can you manage Terraform configurations for multiple environments?
+Answer: Use separate .tfvars files, directories, or workspaces for each environment.
+What steps would you take to troubleshoot a Terraform deployment issue?
+Answer: Check the error logs, use terraform plan to inspect the changes, validate variable values, and ensure network/security configurations are correct.
