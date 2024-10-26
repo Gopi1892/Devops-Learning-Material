@@ -1,3 +1,47 @@
+Step 1: Ensure Ansible is Installed
+If you haven’t installed Ansible yet, follow the previous steps to install it on your EC2 instance.
+
+Step 2: Create a Directory for Ansible Playbooks
+First, create a directory to hold your playbooks:
+
+mkdir ~/ansible-playbooks
+cd ~/ansible-playbooks
+
+Step 3: Create the Ansible Playbook
+Create a new playbook file named nginx.yml:
+
+Step 4: Run the Ansible Playbook
+Execute the playbook to install Nginx:
+
+ansible-playbook nginx.yml
+
+Step 5: Verify Nginx Installation
+After the playbook runs successfully, you can verify that Nginx is installed and running:
+
+Check Nginx status:
+
+sudo systemctl status nginx
+
+Access Nginx in a Web Browser:
+Open a web browser and enter your EC2 instance's public IP address:
+
+http://YOUR_INSTANCE_PUBLIC_IP
+
+You should see the custom HTML page you created in the playbook:
+Hello, Ansible is successfully installed!
+This page is served by Nginx on an EC2 instance.
+
+
+
+
+
+
+
+
+
+
+
+
 ---
 - name: Install and configure Nginx
   hosts: localhost
