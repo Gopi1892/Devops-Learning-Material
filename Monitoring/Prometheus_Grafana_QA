@@ -1,0 +1,69 @@
+Here are some commonly asked interview questions for Prometheus and Grafana, which cover both technical knowledge and practical application:
+
+Prometheus Questions
+What is Prometheus, and how does it work?
+Explain Prometheus as a monitoring tool and time-series database, focusing on its pull-based data collection from targets (via HTTP endpoints), data storage model, and use of PromQL for querying metrics.
+Explain the Prometheus architecture. What are the main components?
+Discuss the components: Prometheus server, data storage, exporters, alert manager, push gateway, and PromQL.
+What is PromQL, and why is it important?
+Describe PromQL as the query language for Prometheus, allowing users to retrieve and manipulate time-series data to create alerts and dashboards.
+How does Prometheus store data?
+Explain Prometheus' storage model, where data is stored as time-series, with metric names and labels. Discuss its use of a local, on-disk storage model optimized for time-series data.
+What is an exporter in Prometheus?
+Define exporters as components that expose system metrics in a Prometheus-compatible format. Common exporters include Node Exporter (for system metrics), Blackbox Exporter (for probing endpoints), and custom application exporters.
+What is the difference between push and pull in Prometheus, and when would you use each?
+Explain that Prometheus typically pulls metrics from endpoints but can also push metrics using the Pushgateway, useful for short-lived batch jobs.
+How does Prometheus handle high availability (HA) and scaling?
+Describe the horizontal scaling of Prometheus by deploying multiple Prometheus servers with identical configurations and using Thanos or Cortex for long-term storage and HA.
+What is a Prometheus alert, and how is it configured?
+Explain how alerts are configured using alerting rules in Prometheus, with Alertmanager managing notifications and integrations with services like Slack, email, and PagerDuty.
+What are Prometheus metrics, and what are the types of metrics available?
+Define Prometheus metric types: Counters, Gauges, Histograms, and Summaries, and give examples of when each type is appropriate.
+What is the role of labels in Prometheus, and how do they work?
+Describe labels as key-value pairs that add dimensions to metrics, enabling filtering, aggregation, and fine-grained querying.
+How can you set up Prometheus to monitor an application?
+Describe configuring scrape jobs in the prometheus.yml file, setting up exporters if needed, and defining target endpoints for data collection.
+How do you handle long-term storage in Prometheus?
+Discuss how to use remote storage solutions, such as Thanos, Cortex, or M3, which integrate with Prometheus to store data longer than the local retention period.
+What is the rate() function in PromQL, and how is it used?
+Explain that rate() calculates the per-second average rate of increase of a counter, commonly used to measure metrics like request rates or error rates over a time window.
+How do you secure Prometheus?
+Describe security options such as configuring access control, securing communication with HTTPS and authentication, or using reverse proxies for additional security layers.
+Grafana Questions
+What is Grafana, and how does it integrate with Prometheus?
+Describe Grafana as an open-source visualization and analytics platform and explain how it connects to Prometheus as a data source to create dashboards from Prometheus metrics.
+Explain the basic Grafana architecture.
+Discuss Grafana’s architecture, including data sources, visualization layers, the front-end interface, plugins, and the Grafana server.
+How do you set up a Prometheus data source in Grafana?
+Describe the steps to add a Prometheus data source by configuring the Prometheus URL, setting query time ranges, and specifying custom configurations.
+What are some common visualization types in Grafana?
+Discuss types like graphs, tables, heatmaps, gauges, and bar charts, and describe how each type can be useful for specific metrics.
+How can you use Grafana to set up alerts based on Prometheus metrics?
+Explain how to configure alert rules in Grafana, set alert conditions, thresholds, and notifications, and discuss differences between Grafana alerting and Prometheus Alertmanager.
+What are variables in Grafana, and how do they enhance dashboard usability?
+Define variables as dynamic values that users can control through drop-downs in dashboards, allowing for more flexible and reusable dashboards.
+How does Grafana handle user permissions and roles?
+Explain Grafana’s user roles, including Viewer, Editor, and Admin, and describe how permissions can be set at the folder or dashboard level.
+Explain how templating works in Grafana and provide an example.
+Describe templating as a feature that allows the use of variables to create dynamic dashboards. For instance, a variable might select different servers or environments in a single dashboard.
+What are Grafana plugins, and why are they used?
+Explain that plugins add functionality to Grafana, such as new data sources, panels, and apps. Give examples like MySQL, Elasticsearch data sources, or custom visualizations.
+What is Loki, and how does it relate to Grafana?
+Describe Loki as a log aggregation system designed to work with Grafana, similar to how Prometheus works with metrics. Explain how it allows users to visualize and correlate logs with Grafana dashboards.
+How do you use transformations in Grafana?
+Explain that transformations process and manipulate data after it’s retrieved from a data source, allowing users to filter, join, or calculate new values before visualization.
+How do you troubleshoot performance issues in Grafana?
+Discuss checking query execution times, optimizing PromQL queries, limiting the number of data points, adjusting dashboard refresh rates, and monitoring Grafana server health.
+What is a Grafana panel, and how is it configured?
+Explain that panels are visual elements in Grafana, configured individually to represent data with different visualizations, queries, and settings.
+How can Grafana dashboards be shared?
+Describe sharing options, such as providing direct dashboard links, exporting JSON configurations, creating snapshots, or embedding dashboards in web applications.
+What are some common performance tuning tips for Grafana?
+Discuss tips like optimizing data sources, using lower refresh rates, applying query limits, leveraging caching, and reducing dashboard complexity.
+Scenario-Based Questions
+If you notice high latency on your Prometheus server, how would you troubleshoot it?
+How would you create an alert in Prometheus to notify you when a service is down?
+Your Grafana dashboard is showing delayed data from Prometheus. What steps would you take to resolve this?
+Explain how you would monitor a Kubernetes cluster using Prometheus and Grafana.
+Describe how you would handle a situation where multiple Prometheus servers are required for scaling. How would you integrate them into Grafana?
+These questions test both the candidate's understanding of Prometheus and Grafana, as well as their practical experience in configuring, optimizing, and troubleshooting these tools in real-world environments.
