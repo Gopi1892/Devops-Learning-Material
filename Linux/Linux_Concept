@@ -1,0 +1,175 @@
+1. Package Manager - Installing Software
+Package managers simplify the process of installing, updating, and removing software on a Linux system.
+
+Examples:
+
+apt (Debian/Ubuntu)
+yum/dnf (RHEL/CentOS)
+pacman (Arch Linux)
+Key Commands:
+
+Install software:
+
+sudo apt install <package_name>  # For Debian-based systems
+sudo yum install <package_name> # For RHEL-based systems
+Update software:
+
+sudo apt update  # Updates package lists
+sudo apt upgrade # Installs available updates
+Remove software:
+
+sudo apt remove <package_name>
+How it works:
+
+The package manager downloads precompiled software or source code from repositories.
+Dependencies (other software required for the package to work) are resolved automatically.
+2. Users, Groups, and Permissions
+Linux uses users and groups to manage access to files and resources.
+
+Users:
+
+Each user has a unique User ID (UID).
+Users are defined in the /etc/passwd file.
+Groups:
+
+Groups allow collective permissions for multiple users.
+Groups are defined in the /etc/group file.
+Managing Users and Groups:
+
+Add a user:
+
+sudo adduser <username>
+Delete a user:
+
+sudo deluser <username>
+Add a user to a group:
+
+sudo usermod -aG <groupname> <username>
+3. File Ownership and Permissions
+Each file in Linux has:
+
+Owner: Typically the user who created the file.
+Group: A group that has shared access to the file.
+Others: All other users.
+File Permissions:
+
+Represented as rwx (read, write, execute):
+
+r: Read permission (4).
+w: Write permission (2).
+x: Execute permission (1).
+Permissions are displayed using ls -l:
+
+
+-rw-r--r--  1 user group size date filename
+Changing Ownership:
+
+Change owner:
+
+sudo chown <user> <file>
+Change group:
+
+sudo chgrp <group> <file>
+4. Linux File System
+The Linux file system is hierarchical, starting with the root directory /.
+
+Key Directories:
+
+/bin: Essential user binaries (commands like ls, cp).
+/etc: Configuration files.
+/home: Home directories for users.
+/var: Variable files like logs.
+/usr: User-installed software and libraries.
+5. Security and System Administration
+Linux has robust security mechanisms, including:
+
+Firewall: Tools like ufw and iptables control network traffic.
+
+sudo ufw enable
+sudo ufw allow <port_number>
+SELinux/AppArmor: Advanced access control systems.
+System Monitoring:
+View running processes:
+
+top or htop
+View disk usage:
+
+df -h
+6. Working with Vim Editor
+Vim is a powerful text editor for Linux.
+
+Basic Commands:
+Enter Vim:
+
+vim <filename>
+Modes:
+Insert Mode: For editing text (press i to enter).
+Normal Mode: For commands (press Esc to enter).
+Command Mode: For saving or exiting (press : in normal mode).
+Save and exit:
+
+:wq
+Exit without saving:
+
+:q!
+7. Filters and Redirections
+Filters process input and output streams.
+
+Common Filters:
+
+grep: Search text.
+
+grep <pattern> <file>
+sort: Sort lines in a file.
+
+sort <file>
+Redirection:
+
+Redirect output to a file:
+
+command > file
+Append output to a file:
+
+command >> file
+8. Modifying Permissions
+Change permissions using chmod.
+
+Symbolic Mode:
+Add execute permission to the user:
+
+chmod u+x <file>
+Octal Mode:
+Set permissions to rwxr-xr-- (755):
+
+chmod 755 <file>
+9. Cron Jobs
+Cron is used to schedule tasks.
+
+Setting up Cron Jobs:
+
+Edit the crontab:
+
+crontab -e
+Add a job in the format:
+
+* * * * * command_to_run
+(minute, hour, day of month, month, day of week).
+Example:
+
+Run a script daily at 5 AM:
+javascript
+
+0 5 * * * /path/to/script.sh
+10. Archiving
+Archiving combines multiple files into one.
+
+Commands:
+Create an archive with tar:
+
+tar -cvf archive.tar file1 file2
+Extract files:
+
+tar -xvf archive.tar
+Compress with gzip:
+
+tar -cvzf archive.tar.gz file1 file2
