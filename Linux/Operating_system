@@ -1,0 +1,79 @@
+An Operating System (OS) is system software that acts as an intermediary between computer hardware and the user. It manages the computer’s hardware resources and provides an environment for applications to run. Without an OS, a computer would not be usable for most people because applications would not be able to interact with hardware efficiently or safely.
+
+What is an OS?
+Key Roles of an OS:
+Resource Management:
+
+Manages the CPU, memory, storage, and I/O devices.
+Ensures that resources are allocated efficiently and fairly to various programs.
+Abstraction:
+
+Simplifies hardware complexity by providing a layer of abstraction.
+For example, instead of writing complex code to interact with a disk drive, developers use file systems provided by the OS.
+Control and Security:
+
+Protects data and resources from unauthorized access.
+Ensures processes do not interfere with each other.
+Convenience:
+
+Offers user-friendly interfaces like GUIs and CLIs for interacting with the system.
+How Does an OS Work?
+1. Boot Process
+When a computer is powered on, the bootloader initializes the system.
+It loads the OS kernel into memory and hands control to it.
+2. Kernel Operations
+The kernel is the core of the OS and works in the following ways:
+
+Process Management:
+
+Manages running applications (processes).
+Handles multitasking by scheduling processes on the CPU.
+Ensures processes don’t interfere with each other using isolation.
+Memory Management:
+
+Tracks which memory is free or in use.
+Allocates memory to applications and retrieves it when no longer needed.
+Uses techniques like paging and virtual memory to extend the effective memory.
+File System Management:
+
+Manages files and directories on storage devices.
+Handles operations like reading, writing, creating, and deleting files.
+Organizes data in logical structures like FAT32, NTFS, or ext4.
+Device Management:
+
+Uses device drivers to communicate with hardware like printers, keyboards, and GPUs.
+Manages device input/output requests using a queue system.
+Interrupt Handling:
+
+Responds to hardware or software interrupts (signals) for tasks like user input or timer ticks.
+3. System Calls
+Applications communicate with the OS via system calls. These are predefined functions that provide access to OS features.
+
+Examples:
+open() to access files.
+malloc() to request memory.
+fork() to create a new process.
+4. User Interface
+The OS provides ways for users to interact with the system:
+
+Command-Line Interface (CLI):
+Users type commands (e.g., Linux terminal, Windows Command Prompt).
+Graphical User Interface (GUI):
+Users interact with windows, icons, and menus (e.g., Windows, macOS).
+5. Multitasking and Scheduling
+The OS can run multiple processes simultaneously by sharing the CPU.
+
+Time-Slicing: Divides CPU time into small slices for each process.
+Prioritization: Assigns higher priority to important processes.
+6. Security and Access Control
+Enforces permissions to protect data and resources.
+Prevents malware or unauthorized processes from accessing critical parts of the system.
+Example of Workflow
+Let’s say you want to open a document in a word processor:
+
+You click on the file icon.
+The GUI sends a request to the OS.
+The OS accesses the storage device via a driver to retrieve the file.
+The OS allocates memory for the word processor.
+The word processor uses system calls to read the file content into memory.
+You interact with the file via the GUI.
