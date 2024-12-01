@@ -24,6 +24,8 @@ kill - Terminate processes by PID
 top - Display Linux tasks (system monitoring)
 nano - A simple text editor
 vi/vim - A more advanced text editor
+
+
 Intermediate Commands
 tar - Archive files
 gzip/gunzip - Compress and decompress files
