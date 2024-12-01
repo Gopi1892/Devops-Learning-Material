@@ -33,10 +33,6 @@ rsync - Remote file and directory synchronization
 wget - Retrieve files from the web
 curl - Transfer data from or to a server
 ssh - OpenSSH SSH client (remote login program)
-chmod - Change file modes or Access Control Lists
-chown - Change file owner and group
-df - Report file system disk space usage
-du - Estimate file space usage
 alias - Create an alias for a command
 awk - Pattern scanning and processing language
 sed - Stream editor for filtering and transforming text
@@ -49,6 +45,7 @@ ln - Create hard and symbolic links
 netstat - Print network connections, routing tables, interface statistics, masquerade connections, and multicast memberships
 iptables - Administration tool for IPv4 packet filtering and NAT
 ufw - Uncomplicated Firewall, front-end for iptables
+
 Advanced Commands
 iptables - Administration tool for IPv4 packet filtering and NAT
 firewalld - Dynamic firewall management tool with D-Bus interface
@@ -62,16 +59,3 @@ dmesg - Print or control the kernel ring buffer
 sysctl - Configure kernel parameters at runtime
 systat - Collection of performance monitoring tools
 vmstat - Report virtual memory statistics
-sar - Collect, report, or save system activity information
-ip - Show/manipulate routing, devices, policy routing, and tunnels
-docker - Docker container management
-kubernetes - Container orchestration tool
-ansible - Automation tool for managing remote systems
-chef - Configuration management tool
-puppet - IT automation tool for configuration management
-terraform - Infrastructure as Code (IaC) tool
-git - Distributed version control system
-jenkins - Automation server for CI/CD
-prometheus - Monitoring and alerting toolkit
-grafana - Open-source platform for monitoring and observability
-elk stack (Elasticsearch, Logstash, Kibana) - Log management and analytics
