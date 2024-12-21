@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Configuration
+PORT=8000
+DIRECTORY="public"
+
+# Ensure the directory exists
+if [ ! -d "$DIRECTORY" ]; then
+    mkdir -p "$DIRECTORY"
+    echo "<html><body><h1>Welcome to your website!</h1></body></html>" > "$DIRECTORY/index.html"
+fi
+
+# Install necessary packages
+echo "Installing required packages..."
+sudo yum update -y
+sudo yum install -y python3
+
+# Start the server
+echo "Starting the HTTP server..."
+python3 -m http.server "$PORT" --directory "$DIRECTORY"
+
+
+# Make sure inbound port 8000 and http in ec2. You can access the website from publicip:8000
