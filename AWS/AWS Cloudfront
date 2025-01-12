@@ -1,0 +1,49 @@
+AWS CloudFront is a fast, reliable, and secure Content Delivery Network (CDN) service offered by Amazon Web Services (AWS). It delivers data, videos, applications, and APIs to users globally with low latency and high transfer speeds by caching content at edge locations around the world.
+
+Key Features of AWS CloudFront
+Global Edge Network:
+CloudFront has a vast network of edge locations spread globally.
+Content is cached at these locations to reduce latency and provide faster delivery.
+Caching for Static and Dynamic Content:
+Static Content: Caches files like images, videos, stylesheets, JavaScript, etc.
+Dynamic Content: Uses features like Lambda@Edge and CloudFront Functions to customize responses dynamically.
+Integration with AWS Services:
+Seamlessly integrates with Amazon S3, Elastic Load Balancing (ELB), and EC2 for content delivery.
+Works with AWS Shield and WAF (Web Application Firewall) for enhanced security.
+Secure Content Delivery:
+Supports HTTPS for encrypted connections.
+Allows custom SSL certificates for secure delivery using your domain.
+Integration with AWS Identity and Access Management (IAM) for access control.
+Customizable with Edge Computing:
+Lambda@Edge: Runs serverless code at edge locations for dynamic content processing, like modifying headers or routing requests.
+CloudFront Functions: Lightweight, low-latency functions for simple edge logic.
+Content Delivery Optimization:
+Supports Gzip and Brotli compression for faster transfer of text-based assets.
+Provides cache invalidation to refresh cached content.
+Access Control:
+Geo-restriction: Block or allow content based on the user's geographic location.
+Signed URLs and Cookies: Control access to private content by issuing temporary credentials.
+Monitoring and Analytics:
+Provides detailed metrics via Amazon CloudWatch.
+Tracks cache hit/miss rates, latencies, and request counts.
+Scalability and High Availability:
+Automatically scales to handle spikes in traffic.
+Distributed architecture ensures high availability.
+Pricing:
+Pay-as-you-go model based on:
+Data transfer out.
+Number of HTTP/HTTPS requests.
+Additional features like Lambda@Edge and CloudFront Functions.
+Typical Use Cases
+Accelerating Website Performance:
+Cache web assets to reduce latency for users worldwide.
+Video Streaming:
+Delivers on-demand or live streaming videos with adaptive bitrate streaming support.
+API Acceleration:
+Speeds up API responses by caching and reducing backend load.
+Global Application Delivery:
+Improves the performance of global web applications and e-commerce platforms.
+Secure Content Delivery:
+Use signed URLs or cookies to distribute confidential or paid content.
+Static and Dynamic Content Delivery:
+Combines caching of static assets with the ability to deliver dynamic, personalized content.
