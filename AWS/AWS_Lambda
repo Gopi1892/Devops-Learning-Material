@@ -1,0 +1,62 @@
+1. Serverless Architecture - Lambda
+Definition: A serverless architecture eliminates the need to manage servers. AWS Lambda runs your code in response to events and automatically manages the underlying infrastructure.
+Key Benefits:
+Scalability: Automatically scales up or down with the workload.
+Cost-effectiveness: Pay only for the compute time used (billed per millisecond).
+Reduced Management: No need to provision, manage, or patch servers.
+Event-driven: Reacts to events such as API calls, file uploads, or database changes.
+
+2. Lambda Event Sources
+Lambda integrates with a wide range of AWS services that can act as event sources to trigger the function. These are divided into two categories:
+
+Push-Based Event Sources: Automatically invoke the Lambda function when an event occurs.
+Examples:
+API Gateway (HTTP requests)
+S3 (Object upload)
+DynamoDB Streams
+EventBridge (Scheduled or custom events)
+Pull-Based Event Sources: Lambda polls the event source for new events.
+Examples:
+SQS (Standard and FIFO queues)
+Kinesis Data Streams
+DynamoDB Streams (as a pull model)
+
+3. Lambda Triggers and Destinations
+Triggers: These are configurations that automatically invoke a Lambda function in response to an event from a source.
+Common Triggers: API Gateway, S3, DynamoDB Streams, SNS, SQS, CloudWatch Events, CloudTrail Logs.
+Destinations: Define the target for successful or failed asynchronous invocations of a Lambda function.
+Success Destinations:
+SNS Topic
+SQS Queue
+Lambda Function
+EventBridge
+Failure Destinations: Same as success destinations but used for capturing failures.
+
+4. Lambda Functions
+Core Concept: A Lambda function is a piece of code written in languages like Python, Node.js, Java, Go, or C# that performs a task.
+Key Components:
+Code: Function logic.
+Runtime: Execution environment for the code (e.g., Python 3.9, Node.js 18).
+Handler: Entry point for the function.
+Execution Role: IAM role granting permissions to interact with AWS services.
+Timeout: Maximum execution duration (default 3 seconds; maximum 15 minutes).
+Memory: Configurable (128 MB to 10 GB).
+Environment Variables: Pass configuration values securely.
+
+5. Lambda Deployment
+Deployment Process:
+Write and test the function locally or in the AWS Lambda console.
+Package the code into a .zip file or a container image (if using container-based deployment).
+Deploy the package to AWS Lambda using the AWS Management Console, AWS CLI, or CI/CD pipelines.
+Deployment Models:
+Inline Editor: Quick edits and testing in the Lambda console.
+ZIP Package: Upload a compressed file containing the code and dependencies.
+Container Image: Use Docker to deploy large applications.
+Versioning and Aliases:
+Versions: Immutable snapshots of a Lambda function.
+Aliases: Pointers to specific versions, enabling smoother deployment and testing.
+Tools for Deployment:
+AWS SAM (Serverless Application Model)
+AWS CloudFormation
+AWS CodePipeline
+Terraform
