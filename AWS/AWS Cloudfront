@@ -29,7 +29,7 @@ Tracks cache hit/miss rates, latencies, and request counts.
 Scalability and High Availability:
 Automatically scales to handle spikes in traffic.
 Distributed architecture ensures high availability.
-Pricing:
+Pricing model:
 Pay-as-you-go model based on:
 Data transfer out.
 Number of HTTP/HTTPS requests.
