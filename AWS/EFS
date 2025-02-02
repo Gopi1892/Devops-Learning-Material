@@ -1,6 +1,6 @@
 Amazon Elastic File System (EFS) is a fully managed file storage service designed for use with Amazon Elastic Compute Cloud (EC2) instances. EFS provides a simple, scalable, elastic file system for Linux-based workloads in the AWS Cloud as well as on-premises. Here’s an overview of its key features and use cases:
 
-Key Features:
+Key Feature:
 Elasticity: EFS automatically grows and shrinks as you add and remove files, so your applications have the storage they need when they need it.
 Scalability: It can scale up to petabytes of data and can support thousands of EC2 instances accessing the file system concurrently.
 Availability and Durability: EFS is designed to be highly available and durable. It stores data across multiple Availability Zones (AZs) within an AWS Region.
