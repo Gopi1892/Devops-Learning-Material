@@ -3,7 +3,7 @@ AWS EBS, which stands for Amazon Web Services Elastic Block Store. AWS EBS is a 
 Elastic Block Store (EBS) provides block-level storage volumes that can be used with Amazon EC2 instances.
 Durability: EBS volumes are designed to be highly available and reliable. They are automatically replicated within their Availability Zone to protect against hardware failures.
 Performance: EBS volumes offer consistent performance, and you can choose from different types of volumes depending on your performance needs, such as General Purpose SSD (gp2, gp3), Provisioned IOPS SSD (io1, io2), Throughput Optimized HDD (st1), and Cold HDD (sc1).
-Snapshots: You can create snapshots of EBS volumes, which are stored in Amazon S3. These snapshots can be used to create new EBS volumes or to restore the original volume if needed.
+Snapshot: You can create snapshots of EBS volumes, which are stored in Amazon S3. These snapshots can be used to create new EBS volumes or to restore the original volume if needed.
 Encryption: EBS volumes can be encrypted to secure your data at rest, and encryption can be enabled with a single checkbox.
 
 Amazon EBS can be used in a variety of scenarios. Here are some common use cases:

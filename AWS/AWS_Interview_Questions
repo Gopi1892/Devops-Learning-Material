@@ -35,9 +35,11 @@ How does Amazon DynamoDB differ from Amazon RDS?
 Answer: DynamoDB is a fully managed NoSQL database, optimized for low-latency, high-performance applications. RDS is used for relational databases with structured data and SQL querying, while DynamoDB is more flexible for key-value or document-based data.
 What is AWS Elastic File System (EFS), and how is it used?
 Answer: EFS provides scalable, managed, and elastic network file storage for Linux-based EC2 instances. It’s designed for shared access by multiple EC2 instances and scales automatically to store files from different instances.
+
 What is Amazon S3 Glacier, and when would you use it?
 Answer: S3 Glacier is a low-cost storage service for long-term data archiving. It’s ideal for data that’s rarely accessed but requires long-term retention, with retrieval options of minutes to hours.
-Networking in AWS
+
+Networking  AWS
 What is a Virtual Private Cloud (VPC) in AWS?
 Answer: VPC is a virtual network for AWS resources that allows control over IP address ranges, subnets, route tables, and security groups, enabling private, secure connections for resources within AWS.
 Explain the purpose of a security group in AWS.
