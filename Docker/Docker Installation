@@ -2,7 +2,7 @@ For System Requirement https://docs.docker.com/desktop/install/windows-install/
 
       sudo apt-get update -y  // To update Ubuntu Machine
       lsb_release -a          // To check version of Ubuntu
-      sudo apt-get install docker  // Install Docker
+      sudo apt-get install docker.io  // Install Docker
       sudo systemctl enable docker    //Docker will start everytime a machine is restarted
       sudo systemctl status docker    // To check status of Docker if it is running
       sudo systemctl start docker     // If docker has not started we can start docker service
