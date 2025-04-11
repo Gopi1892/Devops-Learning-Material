@@ -127,3 +127,4 @@ How do you set up a Jenkins job to run nightly builds?
 Answer: Configure a job trigger using a cron expression under Build Triggers to run nightly, allowing for automated daily testing or deployments.
 Explain the process of setting up a pipeline to build a Docker image and push it to Docker Hub.
 Answer: Write a pipeline script with stages to build a Docker image, authenticate with Docker Hub using stored credentials, and push the image to Docker Hub.
+
