@@ -1,0 +1,56 @@
+pipeline {
+    agent any
+
+    environment {
+        IMAGE_NAME = 'gkdocker1892/sample-registration-form' //Yourdockername
+        IMAGE_TAG = 'latest'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/Gopi1892/SampleRegistratonForm.git'
+            }
+        }
+
+        stage('Build WAR') {
+            steps {
+                sh 'mvn clean package -DskipTests'
+            }
+        }
+
+        stage('Prepare WAR') {
+            steps {
+                sh 'cp target/*.war ROOT.war'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t $IMAGE_NAME:$IMAGE_TAG .'
+            }
+        }
+
+        stage('Push to Docker Hub') {
+            steps {
+                withCredentials([usernamePassword(
+                    credentialsId: 'Docker', //CredentialId
+                    usernameVariable: 'DOCKER_USER',
+                    passwordVariable: 'DOCKER_PASS'
+                )]) {
+                    sh 'echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin'
+                    sh 'docker push $IMAGE_NAME:$IMAGE_TAG'
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo "✅ Docker image $IMAGE_NAME:$IMAGE_TAG pushed successfully!"
+        }
+        failure {
+            echo "❌ Pipeline failed. Check logs above."
+        }
+    }
+}
