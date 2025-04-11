@@ -2,13 +2,19 @@ pipeline {
     agent any
 
     stages {
-        stage('Print Message') {
+        stage('Checkout') {
             steps {
+                checkout scm
                 script {
                     def branchName = env.BRANCH_NAME
-                    echo "Building branch: ${branchName}"
-                    echo 'Hello! Multi branch pipeline file is successful'
+                    echo "🚀 Starting build process for branch: ${branchName}"
                 }
+            }
+        }
+
+        stage('Build Info') {
+            steps {
+                echo '✅ Multi-branch pipeline execution completed successfully!'
             }
         }
     }
