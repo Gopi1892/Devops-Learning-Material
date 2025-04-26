@@ -1,0 +1,79 @@
+Monitoring Script:Checks the status of critical services and alerts if they are down.
+
+#!/bin/bash
+services=("apache2" "mysql" "nginx")
+for service in "${services[@]}"; do
+  if ! pgrep -x "$service" > /dev/null; then
+    echo "$service is not running. Restarting..."
+    systemctl restart "$service"
+  fi
+
+User Account Management Script:Automates user account creation and modification.
+
+#!/bin/bash
+username="newuser"
+password="password123"
+useradd -m -p $(openssl passwd -1 "$password") "$username"
+
+Disk Space Monitoring Script:Alerts when disk space crosses a certain threshold.
+
+#!/bin/bash
+threshold=90
+current_usage=$(df -h / | awk 'NR==2 {print $5}' | tr -d '%')
+if [ "$current_usage" -gt "$threshold" ]; then
+  echo "Disk space usage is above $threshold%. Please investigate."
+fi
+
+Backup Script:Automates the backup of critical data.
+
+
+#!/bin/bash
+backup_dir="/path/to/backup"
+source_dir="/data/to/backup"
+timestamp=$(date +"%Y%m%d_%H%M%S")
+tar -czvf "$backup_dir/backup_$timestamp.tar.gz" "$source_dir"
+
+Log Rotation Script:Rotates and compresses log files to save disk space.
+
+#!/bin/bash
+log_dir="/var/log"
+find "$log_dir" -name "*.log" -exec gzip {} \;
+find "$log_dir" -name "*.gz" -mtime +7 -delete
+
+Database Backup Script:Backs up a MySQL or PostgreSQL database.
+
+#!/bin/bash
+db_name="mydatabase"
+username="dbuser"
+password="dbpassword"
+timestamp=$(date +"%Y%m%d_%H%M%S")
+mysqldump -u "$username" -p"$password" "$db_name" > "backup_$timestamp.sql"
+
+File Synchronization Script:Synchronizes files between different servers.
+
+#!/bin/bash
+source_dir="/path/to/source"
+dest_server="user@remote_server:/path/to/destination"
+rsync -avz "$source_dir" "$dest_server"
+
+System Resource Usage Script:Monitors CPU and memory usage.
+
+#!/bin/bash
+cpu_usage=$(top -bn1 | grep "Cpu(s)" | awk '{print $2}' | cut -d. -f1)
+mem_usage=$(free | awk '/Mem/ {print $3/$2 * 100.0}')
+echo "CPU Usage: $cpu_usage%"
+echo "Memory Usage: $mem_usage%"
+
+Automatic Software Updates Script:Updates the system and installed packages.
+
+#!/bin/bash
+apt update && apt upgrade -y
+
+Web Server Log Analysis Script:Analyzes web server logs for important metrics.
+
+#!/bin/bash
+log_file="/var/log/apache2/access.log"
+total_requests=$(cat "$log_file" | wc -l)
+unique_visitors=$(awk '{print $1}' "$log_file" | sort -u | wc -l)
+echo "Total Requests: $total_requests"
+echo "Unique Visitors: $unique_visitors"
