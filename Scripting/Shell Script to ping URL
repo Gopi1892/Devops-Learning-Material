@@ -1,0 +1,58 @@
+#!/bin/bash
+
+# URL to be pinged
+URL="http URL"
+
+# Send a request to the URL and get the HTTP status code
+HTTP_STATUS=$(curl -o /dev/null -s -w "%{http_code}\n" "$URL")
+
+# Display the status
+if [ "$HTTP_STATUS" -eq 200 ]; then
+    echo "URL is reachable. Status: $HTTP_STATUS"
+else
+    echo "URL is not reachable. Status: $HTTP_STATUS"
+fi
+
+
+
+#!/bin/bash
+
+# URL to be pinged
+URL="URL"
+
+# Send a request to the URL and get the HTTP status code
+HTTP_STATUS=$(curl -o /dev/null -s -w "%{http_code}\n" "$URL")
+
+# Display the status
+if [ "$HTTP_STATUS" -eq 200 ]; then
+    echo "URL is reachable. Status: $HTTP_STATUS"
+else
+    echo "URL is not reachable. Status: $HTTP_STATUS"
+fi
+
+
+Forloop for multiple server
+
+#!/bin/bash
+
+# List of remote servers to be pinged
+REMOTE_SERVERS=("www.guvi.in" "www.google.com" "www.github.com")
+
+# Number of pings to be sent
+PING_COUNT=4
+
+# Loop through each remote server
+for SERVER in "${REMOTE_SERVERS[@]}"; do
+    echo "Pinging $SERVER..."
+    
+    # Ping the remote server
+    ping -c "$PING_COUNT" "$SERVER" > /dev/null 2>&1
+    
+    # Check the exit status of the ping command
+    if [ $? -eq 0 ]; then
+        echo "Server $SERVER is reachable."
+    else
+        echo "Server $SERVER is not reachable."
+    fi
+    echo ""
+done
