@@ -1,0 +1,407 @@
+1. Introduction to Shell Scripting — what it is & why use it
+Intro / purpose
+Shell scripting automates command-line tasks by putting shell commands into a file (a “script”) and running them.
+Use it for backups, file processing, installations, cron jobs, glue code between programs.
+Steps
+Open a terminal.
+Create a text file (e.g., script.sh).
+Add a shebang (first line) to specify interpreter: #!/bin/bash.
+Add commands in the file, save, make executable, run.
+Example script (intro.sh)
+#!/bin/bash
+# intro.sh — demo of simple shell script
+echo "This script will show the current user, working directory, and date."
+
+echo "User: $(whoami)"
+echo "Directory: $(pwd)"
+echo "Date/time: $(date)"
+Run
+chmod +x intro.sh
+./intro.sh
+Notes
+Use comments (#) to explain logic.
+Use set -euo pipefail in production scripts (explained later).
+2. Write & Execute a Simple Script — step-by-step
+Purpose
+Learn the mechanics: file, shebang, permissions, execute.
+Step by step
+Create file: nano hello.sh (or vi/code).
+Add:
+#!/bin/bash
+echo "Hello, World!"
+Save file.
+Make executable: chmod +x hello.sh.
+Run: ./hello.sh (or bash hello.sh).
+Example (hello.sh)
+#!/bin/bash
+# hello.sh
+echo "Hello, World!"
+Alternative run methods
+bash hello.sh — runs with bash even if not executable.
+sh hello.sh — runs with sh (POSIX sh), may behave slightly different.
+3. Variables — declaring, accessing, special forms
+Purpose
+Store data (strings, numbers, arrays).
+Step by step
+Assign: name="Gopi" (no spaces around =).
+Access: echo $name or echo "${name}".
+Unset: unset name.
+Read-only: readonly PI=3.14.
+Examples of variable forms
+#!/bin/bash
+# vars.sh
+
+# Simple variables
+name="Gopi"
+age=30
+
+echo "Name: $name, Age: $age"
+
+# Default / fallback with parameter expansion
+echo "City: ${city:-Unknown}"       # prints Unknown if $city unset
+city="Bangalore"
+echo "City now: ${city:-Unknown}"
+
+# Assign default into variable if unset
+: ${country:="India"}               # sets country="India" if unset
+echo "Country: $country"
+
+# Arrays
+fruits=("apple" "banana" "mango")
+echo "First fruit: ${fruits[0]}"
+echo "All fruits: ${fruits[*]}"
+
+# Associative arrays (bash only)
+declare -A grades
+grades[Alice]=95
+grades[Bob]=88
+echo "Alice grade: ${grades[Alice]}"
+Notes / best practices
+Always quote variable expansions when used in strings or tests: "$var".
+Use ${var} to avoid ambiguity: echo "${name}son" vs echo "$n"son (bad).
+readonly prevents accidental overwrite.
+4. Basic Operators — arithmetic, string, file, logical
+Purpose
+Do math, compare values, test file properties.
+Step by step — arithmetic
+Use $(( )) for integers: sum=$((a + b)).
+For floating point use bc or awk.
+Step by step — comparisons
+Numeric: -eq -ne -lt -le -gt -ge
+String: = or != (use [[ recommended).
+File: -f file (file exists & regular), -d dir (directory), -x (executable).
+Operators example (ops.sh)
+#!/bin/bash
+# ops.sh
+
+a=7
+b=3
+
+# Arithmetic
+echo "a + b = $((a + b))"
+echo "a * b = $((a * b))"
+echo "a / b = $((a / b))"   # integer division
+
+# Floating point with bc
+float_sum=$(echo "scale=4; 3.5 + 2.25" | bc)
+echo "Floating sum: $float_sum"
+
+# Numeric comparisons
+if [ "$a" -gt "$b" ]; then
+  echo "a is greater than b"
+fi
+
+# Strings
+s1="hello"
+s2="hello"
+if [[ "$s1" == "$s2" ]]; then
+  echo "Strings equal (using [[ ]] )"
+fi
+
+# File tests
+file="/etc/passwd"
+if [ -f "$file" ]; then
+  echo "$file exists and is a regular file"
+fi
+Notes
+Prefer [[ ... ]] for string comparisons in bash — it’s safer (no word splitting, supports =~ regex).
+For portable POSIX scripts, use single [ or test.
+5. Read user input — interactive scripts
+Purpose
+Get input from user at runtime.
+Step by step
+Use read to capture input into variable(s).
+read -p "Prompt: " var shows prompt on same line.
+read -s hides input (useful for passwords).
+read -t 5 var will timeout after 5 seconds.
+read -a arr reads words into an array.
+Examples (input.sh)
+#!/bin/bash
+# input.sh
+
+read -p "Enter your name: " name
+echo "Hello, $name!"
+
+read -s -p "Enter secret (hidden): " secret
+echo
+echo "You entered a secret of length ${#secret} characters"
+
+# Read multiple values
+read -p "Enter two numbers separated by space: " n1 n2
+echo "Sum: $((n1 + n2))"
+
+# Read into array
+read -p "Enter words: " -a words
+echo "You entered ${#words[@]} words: ${words[*]}"
+Notes
+Always validate user input (numeric checks, allowed values).
+For unattended scripts use CLI args or environment variables instead of read.
+6. Functions — structure & returning values
+Purpose
+Reuse code, keep scripts modular.
+Step by step
+Define: myfunc() { ... } or function myfunc { ... }.
+Call: myfunc arg1 arg2.
+Access args inside function via $1, $2, etc.
+To return a value, echo it and capture the output, or use global vars. return only provides an integer exit code (0–255).
+Example (functions.sh)
+#!/bin/bash
+# functions.sh
+
+greet() {
+  local name="$1"   # local prevents variable leaking
+  echo "Hello, $name!"
+}
+
+sum() {
+  local a=$1; local b=$2
+  echo $((a + b))   # print the result; caller captures it
+}
+
+greet "Gopi"
+
+result=$(sum 12 30)
+echo "Sum result: $result"
+
+# Demonstrating return codes
+is_even() {
+  local n=$1
+  if (( n % 2 == 0 )); then
+    return 0
+  else
+    return 1
+  fi
+}
+
+is_even 5
+if [ $? -eq 0 ]; then
+  echo "Even"
+else
+  echo "Odd"
+fi
+Notes
+Use local for internal function variables.
+Use echo + command substitution $(...) to get textual return values.
+7. Shell vs sh vs Bash — differences & when to use which
+Short explanation
+sh is the original Bourne shell (POSIX). Many systems symlink /bin/sh to another shell (dash, bash in POSIX mode).
+bash is Bourne Again SHell — superset of sh, adds arrays, [[ ]], process substitution, builtin string operations, associative arrays, etc.
+Use sh (POSIX) for maximum portability; use bash for richer features.
+Examples showing differences
+Arrays: only in bash:
+#!/bin/sh   # will fail for arrays on strict sh
+arr=(1 2 3) # bash feature
+[[ ... ]] tests and =~ regex — bash-only.
+getopts exists in both (POSIX), but advanced parameter expansions are bash-specific.
+When to pick
+Scripts run across many UNIX flavors (AIX, Solaris): use #!/bin/sh and POSIX features.
+Linux admin scripts, personal tools: #!/bin/bash to take advantage of features.
+8. How to write robust Bash scripts — shebang, safety flags, logging
+Step by step (safety)
+Start with:
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+set -e exit on any command failure.
+set -u error on use of undefined variable.
+set -o pipefail makes pipelines fail on the first failing command.
+Use trap to clean up on exit:
+trap 'echo "Cleaning..."; rm -f "$tmpfile"' EXIT
+Validate inputs, check required files, use absolute paths or cd to script directory with cd "$(dirname "$0")".
+Robust script example (robust.sh)
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+
+# Ensure script runs from its directory
+cd "$(dirname "$0")"
+
+tmpfile=$(mktemp)
+trap 'rm -f "$tmpfile"' EXIT
+
+if [ $# -lt 1 ]; then
+  echo "Usage: $0 <filename>"
+  exit 2
+fi
+
+file="$1"
+if [ ! -f "$file" ]; then
+  echo "Error: $file not found"
+  exit 3
+fi
+
+# Process file safely
+grep -n "TODO" "$file" > "$tmpfile" || true
+echo "Found TODOs:"
+cat "$tmpfile"
+Notes
+Use #!/usr/bin/env bash for portability (finds bash on PATH).
+set -euo pipefail is recommended for scripts you rely on.
+9. Conditional Statements — if/elif/else, case, test forms
+If / elif / else
+#!/bin/bash
+# cond.sh
+
+read -p "Enter a number: " n
+
+if [ "$n" -gt 0 ]; then
+  echo "Positive"
+elif [ "$n" -lt 0 ]; then
+  echo "Negative"
+else
+  echo "Zero"
+fi
+Using [[ ]] (bash)
+if [[ "$name" == "Gopi" ]]; then
+  echo "Welcome Gopi"
+fi
+Case statement (useful for menus / pattern match)
+#!/bin/bash
+# case.sh
+
+read -p "Choose (start|stop|status): " cmd
+case "$cmd" in
+  start) echo "Starting...";;
+  stop) echo "Stopping...";;
+  status) echo "Status: OK";;
+  *) echo "Unknown command";;
+esac
+Best practices
+Quote expansions in [ tests: [ "$x" = "y" ].
+Prefer [[ ... ]] in bash for pattern matching and safer handling.
+10. Passing arguments to a script — $0, $1, $@, getopts, shift
+Purpose
+Make scripts reusable via CLI args and flags.
+Step by step
+Read positional args: $1, $2, etc.
+$0 is script name, $# number of args, $@ all args (preserves splitting if quoted).
+Use shift to move positional parameters.
+For flags, use getopts (POSIX / bash built-in) for short options -a -b arg.
+Example using positional args (args.sh)
+#!/bin/bash
+# args.sh
+
+echo "Script: $0"
+echo "Arg1: $1"
+echo "Arg2: $2"
+echo "All args: $@"
+echo "Number of args: $#"
+Example using getopts (options.sh)
+#!/bin/bash
+# options.sh
+usage() { echo "Usage: $0 -n name -a age -v"; exit 1; }
+
+verbose=0
+while getopts ":n:a:v" opt; do
+  case $opt in
+    n) name="$OPTARG" ;;
+    a) age="$OPTARG" ;;
+    v) verbose=1 ;;
+    *) usage ;;
+  esac
+done
+shift $((OPTIND -1))
+
+echo "Name: ${name:-Unknown}, Age: ${age:-N/A}, Verbose: $verbose"
+Notes
+getopts handles short options; for long GNU-style --option consider getopt or manual parsing.
+Always validate required options/args.
+11. Repeating code with shell loops — for, while, until, plus examples
+For loop — iterating lists, files, ranges
+#!/bin/bash
+# loops_for.sh
+
+# iterate static list
+for i in a b c; do
+  echo "Item: $i"
+done
+
+# iterate files
+for file in /etc/*.conf; do
+  echo "Found: $file"
+done
+
+# iterate a numeric sequence (bash)
+for i in {1..5}; do
+  echo "Number $i"
+done
+
+# C-style loop (bash)
+for ((i=0;i<5;i++)); do
+  echo "Count $i"
+done
+While loop
+#!/bin/bash
+# loops_while.sh
+
+count=1
+while [ $count -le 5 ]; do
+  echo "Loop: $count"
+  ((count++))
+done
+Until loop (runs until condition becomes true)
+#!/bin/bash
+# loops_until.sh
+
+count=1
+until [ $count -gt 5 ]; do
+  echo "Until loop: $count"
+  ((count++))
+done
+Looping with read (process a file line by line safely)
+#!/bin/bash
+# read_lines.sh
+# safe line reading: IFS= read -r
+while IFS= read -r line; do
+  echo "LINE: $line"
+done < "/path/to/file"
+Select — simple menus (interactive)
+#!/bin/bash
+# menu.sh
+PS3="Choose an option: "
+select opt in start stop status quit; do
+  case $opt in
+    start) echo "Starting";;
+    stop) echo "Stopping";;
+    status) echo "Status OK";;
+    quit) break;;
+    *) echo "Invalid";;
+  esac
+done
+Notes
+Prefer while IFS= read -r when reading lines to preserve leading/trailing whitespace and backslashes.
+Avoid for line in $(cat file) — word splitting will break lines with spaces.
+Quick checklist / best practices summary
+Always start scripts with the proper shebang: #!/usr/bin/env bash.
+For production scripts:
+set -euo pipefail
+IFS=$'\n\t'
+Quote expansions: "$var".
+Use local inside functions.
+Validate inputs and exit with meaningful codes.
+Log or echo helpful messages in scripts for easier debugging.
+Use trap to clean up temporary files on exit.
+If you want, I can:
+Provide a single multi-feature demo script that uses variables, reads input, functions, options (getopts), conditionals, and loops (so you can see everything together).
+Create a set of short exercises with answers to practice.
+Convert any example to a POSIX sh-compatible version if you need portability.
