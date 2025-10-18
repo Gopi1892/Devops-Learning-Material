@@ -1,0 +1,15 @@
+#! /bin/bash
+
+read -p "Enter your name: " name
+
+echo "Hello, $name!"
+
+read -s -p "Enter secret (hidden): " secret
+echo
+echo "You entered a secret of lenght ${#secret} characters"
+
+read -p "Enter two numbers seperated by space: " n1 n2
+echo "Sum: $((n1+n2))"
+
+read -p "Enter words: " -a words
+echo "Your entered ${#words[@]} words: ${words[*]}"
