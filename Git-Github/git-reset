@@ -23,6 +23,7 @@ Commits C, D, E, F, and G will be discarded, along with any changes associated w
 Warning:
 This command is destructive. It cannot be undone through normal means (e.g., using git reflog) if you realize you made a mistake. Be very sure that you want to lose those commits and any changes before running this command.
 
+
 Use Cases:
 Undoing changes: If you realize that recent changes are incorrect and you want to revert your project to a previous state.
 Cleaning up history: When you want to remove recent commits and their changes permanently.
