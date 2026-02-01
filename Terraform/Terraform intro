@@ -2,6 +2,7 @@ Terraform, developed by HashiCorp, is an open-source Infrastructure as Code (IaC
 
 Here's an in-depth look at Terraform and how it works
 
+
 1. What is Infrastructure as Code (IaC)?
 Infrastructure as Code (IaC) is a key concept in cloud automation, allowing infrastructure to be managed, provisioned, and version-controlled in the same way that software code is. Instead of manually setting up servers, databases, and other resources through a console, IaC tools like Terraform enable you to define these resources in a configuration file and automatically provision or update them.
 
