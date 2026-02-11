@@ -41,6 +41,6 @@ Step 20 - Go to Manage Jenkins > Credentials > Click on Global > Click on Add Cr
 
 Step 21 - In new Credentials. Change kind to "ssh username with key".
 
-Step 22 - Give Id as "ssh", username as "ubuntu" and secret as the pem key in for ec2 machine which is there in our local as secret and save.
+Step 22 - Give Id as "ssh", username as "ubuntu" and secret as the pem key in for ec2 machine which is there in our local as secret and save.(Private key of Jenkins Server)
         
 
