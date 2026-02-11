@@ -6,7 +6,7 @@ pipeline {
             steps {
                 // Use the SSH agent with the credentials stored in Jenkins
                 sshagent(['ssh']) {
-                    sh 'ssh -o StrictHostKeyChecking=no ubuntu@100.25.130.59 "date"'
+                    sh 'ssh -o StrictHostKeyChecking=no ubuntu@100.25.130.59 "date"'  //Public_IP
                     sh 'ssh -o StrictHostKeyChecking=no ubuntu@100.25.130.59 "hostname"'
                 }
             }
