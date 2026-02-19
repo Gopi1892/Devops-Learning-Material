@@ -43,3 +43,14 @@ db.yml
         name: mysql
         state: started
         enabled: yes
+
+
+site.yml
+
+---
+- name: Install Apache using Galaxy Role
+  hosts: webservers
+  become: yes
+
+  roles:
+    - geerlingguy.apache
