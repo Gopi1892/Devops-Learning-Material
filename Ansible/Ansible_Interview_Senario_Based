@@ -1,0 +1,50 @@
+Basic Ansible Questions
+What is Ansible?
+What architecture does Ansible use?
+What are the main components of Ansible?
+What is an Ansible playbook?
+What is an Ansible inventory?
+What is idempotency in Ansible?
+What are Ansible modules?
+What is the difference between the command module and shell module?
+What are Ansible roles?
+What are handlers in Ansible?
+What is Ansible Vault?
+What is dynamic inventory in Ansible?
+What is the difference between include_tasks and import_tasks?
+What is become in Ansible?
+What is Ansible Galaxy?
+
+
+Scenario-Based Ansible Questions
+You have development and production environments that require different configuration values. How would you manage this in Ansible?
+How do you manage environment-specific variables in Ansible?
+You updated a configuration file but want the service to restart only if the file changes. How would you handle this?
+You want to run a specific task only on one server even though the playbook targets multiple servers. How would you do it?
+How do you manage secrets like passwords or API keys in Ansible?
+A playbook fails on one server but you want it to continue running on other servers. How would you handle that?
+You need to deploy an application to 1000 servers without downtime. What approach would you use?
+Your infrastructure is created dynamically in AWS and servers keep changing. How would you manage the inventory?
+How can you list the current inventory in Ansible?
+A variable is not working in your playbook. How would you debug it?
+
+Your playbook takes 30 minutes to run on 500 servers. How would you optimize execution time in Ansible?
+You need to deploy an application with zero downtime across multiple servers. How would you design the playbook?
+Your infrastructure is multi-region AWS with auto-scaling groups. How would you dynamically manage inventory in Ansible?
+A playbook works in development but fails in production. How would you debug the issue?
+You want to execute different tasks for Ubuntu and RHEL servers in the same playbook. How would you handle this?
+You want to skip a task if a specific file already exists on the server. How would you implement this?
+How would you rollback a deployment automatically if the new deployment fails?
+Your playbook requires secure storage of database credentials. How would you implement secure secret management?
+You need to run a database migration only once during deployment across multiple servers. How would you ensure that?
+You want to restart a service only if multiple configuration files change. How would you handle that?
+Your playbook needs to run tasks in parallel but limit the number of servers running at the same time. How would you achieve this?
+You need to deploy an application in stages: load balancer → application servers → database servers. How would you structure the playbook?
+You want to check if a port is open before running a deployment task. How would you implement that?
+A task fails because a package repository is temporarily unavailable. How would you implement retry logic?
+You want to run a playbook automatically whenever code is pushed to Git. How would you integrate Ansible with CI/CD?
+Your playbook needs to copy a configuration template and dynamically update variables based on the environment. How would you implement this?
+You want to deploy Docker containers across multiple servers using Ansible. What modules or approach would you use?
+Your playbook should stop execution if a critical task fails on any server. How would you enforce this?
+You need to check system health after deployment and rollback if health checks fail. How would you automate this?
+How would you structure a large Ansible project with multiple roles, environments, and teams working together?
