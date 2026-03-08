@@ -1,0 +1,61 @@
+Basic CloudFormation Interview Questions
+What is AWS CloudFormation?
+What is Infrastructure as Code (IaC)?
+What are the advantages of using CloudFormation?
+What is a CloudFormation template?
+Which formats are supported for CloudFormation templates?
+What is a CloudFormation stack?
+What happens when you delete a stack?
+What are the main sections of a CloudFormation template?
+What is the Resources section in CloudFormation?
+What are Parameters in CloudFormation?
+What is the use of Outputs in CloudFormation?
+What are Mappings in CloudFormation?
+What are Conditions in CloudFormation?
+What is the difference between Ref and Fn::GetAtt?
+What is the difference between JSON and YAML templates?
+Intermediate CloudFormation Interview Questions
+What is stack rollback in CloudFormation?
+What is drift detection in CloudFormation?
+What are nested stacks?
+What is a change set in CloudFormation?
+What is the difference between Update Stack and Create Stack?
+What are CloudFormation intrinsic functions?
+What is the difference between:
+Fn::Join
+Fn::Sub
+What is the purpose of DependsOn in CloudFormation?
+How do you pass parameters between stacks?
+What is Stack Policy?
+What is StackSet in CloudFormation?
+How do you manage multiple AWS accounts deployment using CloudFormation?
+What is the difference between Ref and ImportValue?
+What happens when you update a resource that requires replacement?
+What are DeletionPolicy and UpdateReplacePolicy?
+Advanced CloudFormation Interview Questions
+How does CloudFormation handle resource dependencies?
+How do you prevent accidental resource deletion?
+How do you reuse CloudFormation templates across environments?
+How do you manage secrets in CloudFormation templates?
+What is the difference between:
+Parameter Store
+Secrets Manager
+CloudFormation parameters
+How do you debug a CloudFormation stack failure?
+What is the maximum number of resources in a CloudFormation template?
+How can you optimize large CloudFormation templates?
+What are macros in CloudFormation?
+What is the difference between:
+CloudFormation
+Terraform
+Scenario-Based CloudFormation Interview Questions
+Your CloudFormation stack failed during creation. How would you troubleshoot it?
+A developer manually modified an EC2 instance created by CloudFormation. How can you detect this change?
+You want to deploy infrastructure to multiple AWS accounts and regions. How would you do it?
+Your stack contains 100+ resources and becomes difficult to manage. What solution would you implement?
+You need to create an S3 bucket only in production environment but not in dev. How would you implement it?
+Your company wants to reuse VPC from another stack. How can you reference it?
+You updated a template but CloudFormation replaced an EC2 instance, causing downtime. How could you avoid this?
+Your company wants to protect an RDS database from accidental deletion. What would you configure?
+A stack update fails midway. What happens to the existing resources?
+How would you deploy a complete 3-tier architecture (VPC + EC2 + RDS + Load Balancer) using CloudFormation?
