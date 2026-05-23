@@ -1,0 +1,23 @@
+Integer Comparison
+
+#!/bin/bash
+
+a=10
+b=20
+
+[ $a -eq $b ] && echo "Equal" || echo "Not equal"
+[ $a -lt $b ] && echo "Less than"
+[ $a -gt $b ] && echo "Greater than"
+[ $a -le $b ] && echo "Less or equal"
+[ $a -ge $b ] && echo "Greater or equal"
+[ $a -ne $b ] && echo "Not equal"
+
+String Operator
+
+str1="hello"
+str2="world"
+ 
+[ "$str1" = "$str2" ] && echo "Equal" || echo "Not equal"
+[ "$str1" != "$str2" ] && echo "Not Equal
+[ -z "$str1" ] && echo "Empty" || echo "Not empty"
+[ -n "$str1" ] && echo "Not empty
