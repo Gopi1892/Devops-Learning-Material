@@ -1,0 +1,25 @@
+#!/bin/bash
+
+echo "===== SERVER HEALTH REPORT ====="
+echo "Hostname: $(hostname)"
+echo "Date: $(date)"
+
+echo ""
+echo "===== UPTIME ====="
+uptime
+
+echo ""
+echo "===== MEMORY USAGE ====="
+free -h
+
+echo ""
+echo "===== DISK USAGE ====="
+df -h
+
+echo ""
+echo "===== TOP 5 MEMORY CONSUMING PROCESSES ====="
+ps aux --sort=-%mem | head -6
+
+echo ""
+echo "===== FAILED SERVICES ====="
+systemctl --failed
