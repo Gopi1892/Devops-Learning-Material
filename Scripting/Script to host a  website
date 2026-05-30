@@ -1,0 +1,26 @@
+#!/bin/bash
+
+echo "Installing Nginx..."
+
+sudo apt update -y
+sudo apt install nginx -y
+
+echo "Starting Nginx..."
+
+sudo systemctl enable nginx
+sudo systemctl start nginx
+
+echo "Creating website..."
+
+cat <<EOF | sudo tee /var/www/html/index.html
+<html>
+<head>
+<title>DevOps Website</title>
+</head>
+<body>
+<h1>Website Hosted Using Bash Script</h1>
+</body>
+</html>
+EOF
+
+echo "Website deployed successfully"
